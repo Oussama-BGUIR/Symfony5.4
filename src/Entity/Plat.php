@@ -26,13 +26,14 @@ class Plat
     #[ORM\Column]
     private ?int $calorie = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
     private ?string $prix = null;
 
     #[ORM\ManyToOne(inversedBy: 'plats')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
     private ?Menu $menu = null;
 
     public function getId(): ?int
