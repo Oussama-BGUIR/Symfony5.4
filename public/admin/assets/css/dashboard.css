@@ -216,7 +216,7 @@
 }
 .ttr-notify-tab .nav li a:hover{
 	background-color: transparent;
-	border-bottom: solid 1px #9D50BB;
+	border-bottom: solid 1px #506dbb;
 }
 .ttr-notify-tab .nav li a{
 	padding: 6px 0;
@@ -224,8 +224,8 @@
 	font-size: 16px;
 }
 .ttr-notify-tab .nav li a.active{
-	border-bottom: solid 1px #9D50BB;
-	color: #9D50BB;
+	border-bottom: solid 1px #506dbb;
+	color: #506dbb;
 }
 .ttr-header-submenu ul li{
 	display: block;
