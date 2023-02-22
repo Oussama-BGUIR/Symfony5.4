@@ -1,0 +1,50 @@
+
+
+{% extends 'admin.html.twig' %}
+
+{# 
+<!DOCTYPE html>
+
+<title>Plat index</title> #}
+
+{% block body %}
+    <h1>Liste des Plats</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Disponibilte</th>
+                <th>Calorie</th>
+                <th>Image</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plat in plats %}
+            <tr>
+                <td>{{ plat.id }}</td>
+                <td>{{ plat.nom }}</td>
+                <td>{{ plat.description }}</td>
+                <td>{{ plat.disponibilte ? 'Yes' : 'No' }}</td>
+                <td>{{ plat.calorie }}</td>
+                <td>{{ plat.image }}</td>
+                <td>{{ plat.prix }}</td>
+                <td>
+                    <a href="{{ path('app_plat_show', {'id': plat.id}) }}">show</a>
+                    <a href="{{ path('app_plat_edit', {'id': plat.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_plat_new') }}">Create new</a>
+{% endblock %}
