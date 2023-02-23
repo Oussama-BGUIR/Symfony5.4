@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche index{% endblock %}
+
+{% block body %}
+    <h1>Fiche index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>numero</th>
+                <th>Duree</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche in fiches %}
+            <tr>
+                <td>{{ fiche.id }}</td>
+                <td>{{ fiche.nom }}</td>
+                <td>{{ fiche.prenom }}</td>
+                <td>{{ fiche.email }}</td>
+                <td>{{ fiche.numtel }}</td>
+                <td>{{ fiche.date ? fiche.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ fiche.duree }}</td>
+                <td>{{ fiche.description }}</td>
+                <td>
+                    <button class=" btn "><a href="{{ path('app_fiche_show', {'id': fiche.id}) }}">Afficher</button> <br> <br>
+                    <button class=" btn "><a href="{{ path('app_fiche_edit', {'id': fiche.id}) }}">Modifier</button> <br> <br>
+                     {{ include('fiche/_delete_form.html.twig') }}
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_new') }}" class="btn btn-success">Creer une fiche</a>
+{% endblock %}

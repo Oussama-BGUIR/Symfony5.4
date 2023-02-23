@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rdv{% endblock %}
+
+{% block body %}
+    <h1>Rdv</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rdv.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ rdv.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ rdv.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ rdv.email }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ rdv.date ? rdv.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ rdv.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rdv_index') }}">Retour</a>
+
+    <a href="{{ path('app_rdv_edit', {'id': rdv.id}) }}">Modifier</a>
+
+    {{ include('rdv/_delete_form.html.twig') }}
+{% endblock %}

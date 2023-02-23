@@ -1,0 +1,67 @@
+<div class="container">
+{{form_start(form,{'attr':{'novalidate':'novalidate'}})}}
+ 
+<div class="form-group">
+    {{ form_label(form.nom," Nom") }}
+    {{ form_widget(form.nom,{ 'attr': {'class': 'form-control'} }) }} 
+    {% if form_errors(form.nom) is not empty %}
+    <div class="alert alert-danger" >
+    {{ form_errors(form.nom) }}
+</div>
+{% endif %}
+<div class="form-group">
+    {{ form_label(form.prenom," Prenom") }}
+    {{ form_widget(form.prenom,{ 'attr': {'class': 'form-control'} }) }} 
+    {% if form_errors(form.prenom) is not empty %}
+    <div class="alert alert-danger" >
+    {{ form_errors(form.prenom) }}
+</div>
+{% endif %}
+
+
+<div class="form-group">
+    {{ form_label(form.email," email") }}
+    {{ form_widget(form.email,{ 'attr': {'class': 'form-control'} }) }} 
+    {% if form_errors(form.email) is not empty %}
+    <div class="alert alert-danger" >
+    {{ form_errors(form.email) }}
+</div>
+  {% endif %}
+
+
+  <div class="form-group">
+    {{ form_label(form.date," Date") }}
+    {{ form_widget(form.date,{ 'attr': {'class': 'form-control'} }) }} 
+    {% if form_errors(form.date) is not empty %}
+    <div class="alert alert-danger" >
+    {{ form_errors(form.date) }}
+</div>
+{% endif %}
+<br> 
+
+<div class="form-group">
+    {{ form_label(form.numtel," numero de telephone") }}
+    {{ form_widget(form.numtel,{ 'attr': {'class': 'form-control'} }) }} 
+    {% if form_errors(form.numtel) is not empty %}
+    <div class="alert alert-danger" >
+    {{ form_errors(form.numtel) }}
+</div>
+{% endif %}
+ 
+ <br>
+
+<div class="form-group">
+    {{ form_label(form.description," Description") }}
+    {{ form_widget(form.description,{ 'attr': {'class': 'form-control'} }) }} 
+    {% if form_errors(form.description) is not empty %}
+    <div class="alert alert-danger" >
+    {{ form_errors(form.description) }}
+</div>
+{% endif %}
+
+
+<br>
+  
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+</div>

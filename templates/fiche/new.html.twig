@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fiche{% endblock %}
+
+{% block body %}
+    <h1>Creer une fiche</h1>
+
+    {{ include('fiche/_form.html.twig') }}
+
+    <a href="{{ path('app_fiche_index') }}">Retour</a>
+{% endblock %}

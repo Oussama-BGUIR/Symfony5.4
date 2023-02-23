@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rdv index{% endblock %}
+
+{% block body %}
+    <h1>Rdv index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>numero </th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rdv in rdvs %}
+            <tr>
+                <td>{{ rdv.id }}</td>
+                <td>{{ rdv.nom }}</td>
+                <td>{{ rdv.prenom }}</td>
+                <td>{{ rdv.email }}</td>
+                <td>{{ rdv.date ? rdv.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rdv.numtel }}</td>
+                <td>{{ rdv.description }}</td>
+                
+                <td>
+                
+                     <button class=" btn "><a href="{{ path('app_rdv_show', {'id': rdv.id}) }}">Afficher</button> <br> <br>
+                    <button class=" btn "><a href="{{ path('app_rdv_edit', {'id': rdv.id}) }}">Modifier</button> <br> <br>
+                     {{ include('rdv/_delete_form.html.twig') }}
+                
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_rdv_new') }}" class="btn btn-success">Creer un rendez_vous</a>
+{% endblock %}

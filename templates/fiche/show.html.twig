@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche{% endblock %}
+
+{% block body %}
+    <h1>Fiche</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ fiche.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ fiche.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ fiche.email }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ fiche.date ? fiche.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ fiche.duree }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ fiche.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_index') }}">Retour</a>
+
+    <a href="{{ path('app_fiche_edit', {'id': fiche.id}) }}">Modifier</a>
+
+    {{ include('fiche/_delete_form.html.twig') }}
+{% endblock %}
