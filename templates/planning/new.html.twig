@@ -1,0 +1,148 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}New Planning{% endblock %}
+
+{% block body %}
+<!-- META ============================================= -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+	
+	<!-- DESCRIPTION -->
+	<meta name="description" content="EduChamp : Education HTML Template" />
+	
+	<!-- OG -->
+	<meta property="og:title" content="EduChamp : Education HTML Template" />
+	<meta property="og:description" content="EduChamp : Education HTML Template" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+	
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href="../error-404.html" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+	
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>EduChamp : Education HTML Template </title>
+	
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- header start -->
+	<header class="ttr-header">
+		<div class="ttr-header-wrapper">
+			<!--sidebar menu toggler start -->
+			<div class="ttr-toggle-sidebar ttr-material-button">
+				<i class="ti-close ttr-open-icon"></i>
+				<i class="ti-menu ttr-close-icon"></i>
+			</div>
+			<!--sidebar menu toggler end -->
+			<!--logo start -->
+			<div class="ttr-logo-box">
+				<div>
+					<a href="index.html" class="ttr-logo">
+						<img class="ttr-logo-mobile" alt="" src="assets/images/logo-mobile.png" width="30" height="30">
+						<img class="ttr-logo-desktop" alt="" src="assets/images/logo-white.png" width="160" height="27">
+					</a>
+				</div>
+			</div>
+			<!--logo end -->
+			<div class="ttr-header-menu">
+				<!-- header left menu start -->
+				
+				<!-- header right menu end -->
+			</div>
+
+	</div>
+	<!-- Left sidebar menu end -->
+
+
+			
+ <h1>Create new Planning</h1>
+
+    {{ include('planning/_form.html.twig') }}
+
+    <a href="{{ path('app_planning_index') }}">back to list</a>
+	</main>
+	<div class="ttr-overlay"></div>
+<script>
+  $(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay,listWeek'
+      },
+      defaultDate: '2019-03-12',
+      navLinks: true, // can click day/week names to navigate views
+
+      weekNumbers: true,
+      weekNumbersWithinDays: true,
+      weekNumberCalculation: 'ISO',
+
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'All Day Event',
+          start: '2019-03-01'
+        },
+        {
+          title: 'Long Event',
+          start: '2019-03-07',
+          end: '2019-03-10'
+        },
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: '2019-03-09T16:00:00'
+        },
+        {
+          id: 999,
+          title: 'Repeating Event',
+          start: '2019-03-16T16:00:00'
+        },
+        {
+          title: 'Conference',
+          start: '2019-03-11',
+          end: '2019-03-13'
+        },
+        {
+          title: 'Meeting',
+          start: '2019-03-12T10:30:00',
+          end: '2019-03-12T12:30:00'
+        },
+        {
+          title: 'Lunch',
+          start: '2019-03-12T12:00:00'
+        },
+        {
+          title: 'Meeting',
+          start: '2019-03-12T14:30:00'
+        },
+        {
+          title: 'Happy Hour',
+          start: '2019-03-12T17:30:00'
+        },
+        {
+          title: 'Dinner',
+          start: '2019-03-12T20:00:00'
+        },
+        {
+          title: 'Birthday Party',
+          start: '2019-03-13T07:00:00'
+        },
+        {
+          title: 'Click for Google',
+          url: 'http://google.com/',
+          start: '2019-03-28'
+        }
+      ]
+    });
+
+  });
+
+</script>
+   
+{% endblock %}
