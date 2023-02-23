@@ -1,11 +1,19 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Edit Plat</h1>
+    <h1 style="text-align:center"> Espace de modification de {{plat.nom}}</h1>
 
-    {{ include('plat/_form.html.twig', {'button_label': 'Update'}) }}
+     <div class="d-md-flex justify-content-between mb-2">
+     <ul class="nav nav-tabs b-none">
+     <li class="btn" ><a href="{{ path('app_plat_index') }}" class="rounded" ><i class="fa fa-arrow-left"></i> <strong> Revenir vers plats </strong></a></li>
+      {{ include('plat/_delete_form.html.twig') }}
+     </ul>
+       </div>
 
-    <a href="{{ path('app_plat_index') }}">back to list</a>
 
-    {{ include('plat/_delete_form.html.twig') }}
+    {{ include('plat/_form.html.twig', {'button_label': 'Changer'}) }}
+
+   
+
+   
 {% endblock %}

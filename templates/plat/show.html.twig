@@ -1,44 +1,52 @@
+
+
+
 {% extends 'admin.html.twig' %}
 
+{# 
+<!DOCTYPE html>
+
+<title>Plat index</title> #}
+
 {% block body %}
-    <h1>Plat</h1>
+    <h1 style="text-align:center"> Détails sur {{plat.nom}}</h1>
+
+     <div class="d-md-flex justify-content-between mb-2">
+     <ul class="nav nav-tabs b-none">
+     <li class="btn" ><a href="{{ path('app_plat_index') }}" class="rounded" ><i class="fa fa-arrow-left"></i> <strong> Revenir vers plats </strong></a></li>
+      {{ include('plat/_delete_form.html.twig') }}
+     </ul>
+       </div>
 
     <table class="table">
-        <tbody>
+        <thead>
             <tr>
                 <th>Id</th>
-                <td>{{ plat.id }}</td>
-            </tr>
-            <tr>
                 <th>Nom</th>
-                <td>{{ plat.nom }}</td>
-            </tr>
-            <tr>
                 <th>Description</th>
-                <td>{{ plat.description }}</td>
-            </tr>
-            <tr>
                 <th>Disponibilte</th>
-                <td>{{ plat.disponibilte ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
                 <th>Calorie</th>
-                <td>{{ plat.calorie }}</td>
-            </tr>
-            <tr>
+              
                 <th>Image</th>
-                <td>{{ plat.image }}</td>
+                  <th>prix</th>
             </tr>
+        </thead>
+        <tbody>
+        
             <tr>
-                <th>Prix</th>
-                <td>{{ plat.prix }}</td>
+                <td>{{ plat.id }}</td>
+                <td>{{ plat.nom }}</td>
+                <td>{{ plat.description }}</td>
+                <td>{{ plat.disponibilte ? 'Disponible' : 'Non Disponible' }}</td>
+                <td>{{ plat.calorie }}</td>
+                
+                <td>
+                <img src="{{asset('uploads/plats/'~plat.image)}}"
+               </td>
+               <td>{{ plat.prix }}</td>
             </tr>
+
         </tbody>
     </table>
 
-    <a href="{{ path('app_plat_index') }}">back to list</a>
-
-    <a href="{{ path('app_plat_edit', {'id': plat.id}) }}">edit</a>
-
-    {{ include('plat/_delete_form.html.twig') }}
 {% endblock %}

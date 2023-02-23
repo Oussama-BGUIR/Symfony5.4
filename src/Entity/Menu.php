@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
 class Menu
@@ -17,16 +18,30 @@ class Menu
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length( min: 3, minMessage: 'nom doit avoir au minimum 3 caracteres',)]
+    #[Assert\NotBlank(message: "vous devez mettre le nom du menu!!!")]
+
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length( min: 50, max: 500, minMessage: 'Vous devez decrire plus de details ',)]
+    #[Assert\NotBlank(message:"vous devez decrire le menu")]
     private ?string $description = null;
+
 
     #[ORM\Column]
     private ?bool $disponibilite = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"vous declarer les calories")]
+    #[Assert\Range(
+        min: 1500,
+        max: 2500,
+        notInRangeMessage: 'il faut que les calories des plats sont équilibrés (entre 1500 et 2500 calories))',
+        
+    )]
     private ?int $calorie = null;
+
 
 
     #[ORM\Column(length: 255, nullable: true)]

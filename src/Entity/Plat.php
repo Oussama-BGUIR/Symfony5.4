@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\PlatRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
 class Plat
@@ -15,21 +17,35 @@ class Plat
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length( min: 3, minMessage: 'nom doit avoir au minimum 3 caracteres',)]
+    #[Assert\NotBlank(message: "vous devez mettre le nom du plat !!!")]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length( min: 10, max: 100, minMessage: 'Vous devez decrire plus de details ',)]
+    #[Assert\NotBlank(message:"vous devez decrire le plat")]
     private ?string $description = null;
 
     #[ORM\Column]
     private ?bool $disponibilte = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"vous declarer les calories")]
+    #[Assert\Range(
+        min: 250,
+        max: 700,
+        notInRangeMessage: 'il faut que les calories du plat est équilibré (entre 250 et 700 calories))',
+        
+    )]
     private ?int $calorie = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
+    #[Assert\Positive(message:" donner un prix réel en dinar")]
+    #[Assert\NotBlank(message:"donner un prix !")]
+
     private ?string $prix = null;
 
     #[ORM\ManyToOne(inversedBy: 'plats')]

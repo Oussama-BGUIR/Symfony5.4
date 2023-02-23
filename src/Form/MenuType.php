@@ -22,7 +22,7 @@ class Menu1Type extends AbstractType
             // ->add('image')
             //ajouter un image
             ->add('photo', FileType::class, [
-                'label' => 'image correspondante (des fichiers images)',
+                'label' => '',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

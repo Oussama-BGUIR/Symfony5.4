@@ -224,177 +224,56 @@
 						</div>
 						<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
+							<div class="col-lg-9 col-md-8 col-sm-12">
+							<div class="row">
+							{% for plat in plats %}
 								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
 										<div class="action-box">
-											<img src="assets/images/courses/pic1.jpg" alt="">
-											<a href="#" class="btn">voir contenu</a>
+											<div class="embed-responsive embed-responsive-16by9">
+                                                <img class="card-img-top embed-responsive-item" src="{{asset('uploads/plats/'~plat.image)}}" >
+                                            </div>
+											<a href="#" class="btn">Acheter</a>
 										</div>
 										<div class="info-bx text-center">
-											<h5><a href="#">Oeufs en cocotte d'avocat</a></h5>
-											<span>pour les vitamines</span>
+											<h5><a href="#">{{ plat.nom }}</a></h5>
+											<span>{{plat.description}}</span>
 										</div>
 										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
+										  <div class="col-6 border-right">
+                                                        <label class="mt-3 mb-0">{{ plat.disponibilte ? 'Disponible' : 'Non Disponible' }}</label>
+                                                    </div>
+											     <div class="col-5 ">
+                                                        <label class="mt-3 mb-0">{{ plat.calorie }} Calories </label>
+                                                    </div>
 												
-												<h5>4,5</h5>
-												<li><a href="#">Acheter</a></li>
-											</div>
 										</div>
+								
+										<div class="row text-center mt-4">
+                                                 <div class="col-9 ">
+                                                <label class="mt-3 mb-0">{{ plat.prix }} Millimes </label>
+                                                </div> 
+                                                   </div>
 									</div>
 								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic2.jpg" alt="">
-											<a href="#" class="btn">voir contenu</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">Salade de riz healthy</a></h5>
-											<span>manger et gagner du poids</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>5 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-
-												</ul>
-											</div>
-											<div class="price">
-												<h5>8,7 DT</h5>
-												<li><a href="#">Acheter</a></li>
-											</div>
-										</div>
+							{% endfor %}
+								
+								
+								
+								{# <div class="col-lg-12 m-b20">
+									<div class="pagination-bx rounded-sm gray clearfix">
+										<ul class="pagination">
+											<li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
+											<li class="active"><a href="#">1</a></li>
+											<li><a href="#">2</a></li>
+											<li><a href="#">3</a></li>
+											<li class="next"><a href="#">Next <i class="ti-arrow-right"></i></a></li>
+										</ul>
 									</div>
-								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic3.jpg" alt="">
-											<a href="#" class="btn">voir contenu</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">Salade vegan arc-en-ciel</a></h5>
-											<span>beaucoup de salades a manger pendant l'entrainement</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<h5>6 DT</h5>
-												<li><a href="#">Acheter</a></li>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic4.webp" alt="">
-											<a href="#" class="btn">voir contenu</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">Jus de banane</a></h5>
-											<span>produit Energitique</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>4 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<h5>4,5 DT</h5>
-												<li><a href="#">Acheter</a></li>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic5.jpg" alt="">
-											<a href="#" class="btn">voir contenu</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">fruits secs</a></h5>
-											<span>pour la force pendant l'entrainement</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>4 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<h5>6,8 DT</h5>
-												<li><a href="#">Acheter</a></li>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic6.jpg" alt="">
-											<a href="#" class="btn">voir contenu</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">miel sauvage</a></h5>
-											<span>bombe energitique</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>5 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-
-												</ul>
-											</div>
-											<div class="price">
-												<h5>7,8 DT</h5>
-												<li><a href="#">Acheter</a></li>
-											</div>
-										</div>
-									</div>
-								</div>
+								</div> #}
+							</div>
+						</div>
+		
 								{# <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
 									<div class="cours-bx">
 										<div class="action-box">

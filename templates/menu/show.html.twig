@@ -1,4 +1,4 @@
-{% extends 'admin.html.twig' %}
+{# {% extends 'admin.html.twig' %}
 
 {% block body %}
     <h1>Menu</h1>
@@ -37,4 +37,53 @@
     <a href="{{ path('app_menu_edit', {'id': menu.id}) }}">edit</a>
 
     {{ include('menu/_delete_form.html.twig') }}
+{% endblock %} #}
+
+
+
+
+{% extends 'admin.html.twig' %}
+
+{# 
+<!DOCTYPE html>
+
+<title>Plat index</title> #}
+
+{% block body %}
+    <h1 style="text-align:center"> Détails sur {{menu.nom}}</h1>
+
+     <div class="d-md-flex justify-content-between mb-2">
+     <ul class="nav nav-tabs b-none">
+     <li class="btn" ><a href="{{ path('app_menu_index') }}" class="rounded" ><i class="fa fa-arrow-left"></i> <strong> Revenir vers Menus </strong></a></li>
+      {{ include('menu/_delete_form.html.twig') }}
+     </ul>
+       </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Disponibilte</th>
+                <th>Calorie</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+            <tr>
+                <td>{{ menu.id }}</td>
+                <td>{{ menu.nom }}</td>
+                <td>{{ menu.description }}</td>
+                <td>{{ menu.disponibilite ? 'Disponible' : 'Non Disponible' }}</td>
+                <td>{{ menu.calorie }}</td>
+                <td>
+                <img src="{{asset('uploads/menus/'~menu.image)}}"
+               </td>
+            </tr>
+
+        </tbody>
+    </table>
+
 {% endblock %}

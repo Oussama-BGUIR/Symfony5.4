@@ -20,6 +20,15 @@
 ======================================
 */
 
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+.card-img-top {
+	width: 100%;
+	height: 40vh;
+	object-fit: cover;
+	}
+
 /*=================================
 	1. HEADER
 =================================*/
