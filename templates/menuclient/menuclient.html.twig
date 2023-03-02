@@ -234,9 +234,15 @@
 											<div class="embed-responsive embed-responsive-16by9">
                                                 <img class="card-img-top embed-responsive-item" src="{{asset('uploads/menus/'~menu.image)}}" >
                                             </div>
-                                            {% for plat in plats %}
-											<a href="{{path('app_platclient', {'id': plat.id}) }}" class="btn">voir contenu</a>
-                                            {% endfor %}
+
+                                            
+                                            {# {% for plat in plats %} #}
+											<a href="{{ path('app_plats_of_menu',{id:menu.id})}}" class="btn">voir contenu</a>
+                                            {# {{ path('app_plats_of_menu',{id:plat.id}) }} #}
+                                            {# {{path('app_platclient', {'id': plat.id}) }} #}
+                                            {# {% endfor %} #}
+
+                                            
 										</div>
 										<div class="info-bx text-center">
 											<h5><a href="#">{{ menu.nom }}</a></h5>

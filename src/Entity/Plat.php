@@ -22,7 +22,7 @@ class Plat
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\Length( min: 10, max: 100, minMessage: 'Vous devez decrire plus de details ',)]
+    #[Assert\Length( min: 10, max: 500, minMessage: 'Vous devez decrire plus de details ',)]
     #[Assert\NotBlank(message:"vous devez decrire le plat")]
     private ?string $description = null;
 

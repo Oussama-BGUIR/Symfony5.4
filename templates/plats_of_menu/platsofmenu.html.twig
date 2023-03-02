@@ -21,8 +21,8 @@
 	<meta name="format-detection" content="telephone=no">
 	
 	<!-- FAVICONS ICON ============================================= -->
-	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+	<link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/favicon.png')}}" />
 	
 	<!-- PAGE TITLE HERE ============================================= -->
 	<title>ELITE GYM Plat</title>
@@ -38,17 +38,17 @@
 	<![endif]-->
     {% block css %}  
 	<!-- All PLUGINS CSS ============================================= -->
-	<link rel="stylesheet" type="text/css" href="assets/css/assets.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/assets.css')}}">
 	
 	<!-- TYPOGRAPHY ============================================= -->
-	<link rel="stylesheet" type="text/css" href="assets/css/typography.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/typography.css')}}">
 	
 	<!-- SHORTCODES ============================================= -->
-	<link rel="stylesheet" type="text/css" href="assets/css/shortcodes/shortcodes.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/shortcodes/shortcodes.css')}}">
 	
 	<!-- STYLESHEETS ============================================= -->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link class="skin" rel="stylesheet" type="text/css" href="assets/css/color/color-1.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{{asset('assets/css/color/color-1.css')}}">
     {% endblock %}
 </head>
 
@@ -84,7 +84,7 @@
                 <div class="container clearfix">
 					<!-- Header Logo ==== -->
 					<div class="menu-logo">
-						<a href="{{path('app_home')}}"><img src="assets/images/logo.png" alt=""></a>
+						<a href="{{path('app_home')}}"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 					</div>
 					<!-- Mobile Nav Button ==== -->
                     <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
 					<!-- Navigation Menu ==== -->
                     <div class="menu-links navbar-collapse collapse justify-content-start" id="menuDropdown">
 						<div class="menu-logo">
-							<a href="index.html"><img src="assets/images/logo.png" alt=""></a>
+							<a href="index.html"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 						</div>
                         <ul class="nav navbar-nav">	
 
@@ -176,7 +176,7 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner4.jpg);">
+        <div class="page-banner ovbl-dark" style="background-image:url({{asset('assets/images/banner/banner4.jpg)')}};">
             <div class="container">
                 <div class="page-banner-entry">
                     <h1 class="text-white">Nos Plats</h1>
@@ -257,109 +257,10 @@
 									</div>
 								</div>
 							{% endfor %}
-							<div class="align-center"> {{ knp_pagination_render(plats) }}</div>
 								
 								
 								
-								{# <div class="col-lg-12 m-b20">
-									<div class="pagination-bx rounded-sm gray clearfix">
-										<ul class="pagination">
-											<li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
-											<li class="active"><a href="#">1</a></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li class="next"><a href="#">Next <i class="ti-arrow-right"></i></a></li>
-										</ul>
-									</div>
-								</div> #}
-							</div>
-						</div>
-		
-								{# <div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic7.jpg" alt="">
-											<a href="#" class="btn">Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-											<span>Programming</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic8.jpg" alt="">
-											<a href="#" class="btn">Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-											<span>Programming</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<img src="assets/images/courses/pic9.jpg" alt="">
-											<a href="#" class="btn">Read More</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">Introduction EduChamp – LMS plugin</a></h5>
-											<span>Programming</span>
-										</div>
-										<div class="cours-more-info">
-											<div class="review">
-												<span>3 Review</span>
-												<ul class="cours-star">
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li class="active"><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-													<li><i class="fa fa-star"></i></li>
-												</ul>
-											</div>
-											<div class="price">
-												<del>$190</del>
-												<h5>$120</h5>
-											</div>
-										</div>
-									</div>
-								</div> #}
-								{# <div class="col-lg-12 m-b20">
+								<div class="col-lg-12 m-b20">
 									<div class="pagination-bx rounded-sm gray clearfix">
 										<ul class="pagination">
 											<li class="previous"><a href="#"><i class="ti-arrow-left"></i> prec</a></li>
@@ -369,7 +270,7 @@
 											<li class="next"><a href="#"> suite <i class="ti-arrow-right"></i></a></li>
 										</ul>
 									</div>
-								</div> #}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -390,7 +291,7 @@
                     <div class="container">
                         <div class="d-flex align-items-stretch">
                             <div class="pt-logo mr-auto">
-                                <a href="index.html"><img src="assets/images/logo-white.png" alt=""/></a>
+                                <a href="index.html"><img src="{{asset('assets/images/logo-white.png')}}" alt=""/></a>
                             </div>
                             <div class="pt-social-link">
                                 <ul class="list-inline m-a0">
@@ -470,14 +371,14 @@
                             <div class="widget widget_gallery gallery-grid-4">
                                 <h5 class="footer-title">Notre Gallerie</h5>
                                 <ul class="magnific-image">
-                                    <li><a href="assets/images/gallery/pic1.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic1.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic2.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic2.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic3.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic3.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic4.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic4.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic5.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic5.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic6.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic6.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic7.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic7.jpg" alt=""></a></li>
-                                    <li><a href="assets/images/gallery/pic8.jpg" class="magnific-anchor"><img src="assets/images/gallery/pic8.jpg" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic1.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic1.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic2.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic2.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic3.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic3.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic4.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic4.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic5.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic5.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic6.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic6.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic7.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic7.jpg')}}" alt=""></a></li>
+                                    <li><a href="{{asset('assets/images/gallery/pic8.jpg')}}" class="magnific-anchor"><img src="{{asset('assets/images/gallery/pic8.jpg')}}" alt=""></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -500,24 +401,22 @@
 {% block js %}
 
 <!-- External JavaScripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/vendors/bootstrap/js/popper.min.js"></script>
-<script src="assets/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/vendors/bootstrap-select/bootstrap-select.min.js"></script>
-<script src="assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-<script src="assets/vendors/magnific-popup/magnific-popup.js"></script>
-<script src="assets/vendors/counter/waypoints-min.js"></script>
-<script src="assets/vendors/counter/counterup.min.js"></script>
-<script src="assets/vendors/imagesloaded/imagesloaded.js"></script>
-<script src="assets/vendors/masonry/masonry.js"></script>
-<script src="assets/vendors/masonry/filter.js"></script>
-<script src="assets/vendors/owl-carousel/owl.carousel.js"></script>
-<script src="assets/js/functions.js"></script>
-<script src="assets/js/contact.js"></script>
-<script src='assets/vendors/switcher/switcher.js'></script>
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/vendors/bootstrap/js/popper.min.js')}}"></script>
+<script src="{{asset('assets/vendors/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/vendors/bootstrap-select/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('assets/vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js')}}"></script>
+<script src="{{asset('assets/vendors/magnific-popup/magnific-popup.js')}}"></script>
+<script src="{{asset('assets/vendors/counter/waypoints-min.js')}}"></script>
+<script src="{{asset('assets/vendors/counter/counterup.min.js')}}"></script>
+<script src="{{asset('assets/vendors/imagesloaded/imagesloaded.js')}}"></script>
+<script src="{{asset('assets/vendors/masonry/masonry.js')}}"></script>
+<script src="{{asset('assets/vendors/masonry/filter.js')}}"></script>
+<script src="{{asset('assets/vendors/owl-carousel/owl.carousel.js')}}"></script>
+<script src="{{asset('assets/js/functions.js')}}"></script>
+<script src="{{asset('assets/js/contact.js')}}"></script>
+<script src='{{asset('assets/vendors/switcher/switcher.js')}}'></script>
 {% endblock %}
-
-
 </body>
 {% endblock %}
 
