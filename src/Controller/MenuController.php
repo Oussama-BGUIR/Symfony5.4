@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+
 #[Route('/menu')]
 class MenuController extends AbstractController
 {
@@ -21,6 +24,22 @@ class MenuController extends AbstractController
             'menus' => $menuRepository->findAll(),
         ]);
     }
+
+    #[Route("/allmenu", name: "listmenu")]
+    public function getMenus(MenuRepository $repo, SerializerInterface $serializer)
+    {
+        $menus = $repo->findAll();
+        $json = $serializer->serialize($menus, 'json', ['groups' => "menu"]);
+        $json1=json_encode($menus);
+        dd($json1);
+        //* Nous renvoyons une réponse Http qui prend en paramètre un tableau en format JSON
+
+        die;
+        return $this->render('menu/menu.html.twig', [
+            'menus' => $repo->findAll(),
+         ]);
+    }
+
 
     #[Route('/new', name: 'app_menu_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MenuRepository $menuRepository, SluggerInterface $slugger): Response
@@ -130,3 +149,23 @@ class MenuController extends AbstractController
         return $this->redirectToRoute('app_menu_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+
+
+
+// zedna 2 use  ou hedha  
+
+// #[Route("/allplat", name: "listplat")]
+// public function getPlats(PlatRepository $repo, SerializerInterface $serializer)
+// {
+//     $plats = $repo->findAll();
+//     $json = $serializer->serialize($plats, 'json', ['groups' => "plat"]);
+//     $json1=json_encode($plats);
+//     dd($json1);
+//     //* Nous renvoyons une réponse Http qui prend en paramètre un tableau en format JSON
+
+//     die;
+//     return $this->render('plat/plat.html.twig', [
+//         'plats' => $repo->findAll(),
+//      ]);
+// } 

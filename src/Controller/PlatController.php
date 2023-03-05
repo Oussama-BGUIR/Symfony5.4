@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
+
 #[Route('/plat')]
 class PlatController extends AbstractController
 {
@@ -20,6 +23,21 @@ class PlatController extends AbstractController
         return $this->render('plat/plat.html.twig', [
             'plats' => $platRepository->findAll(),
         ]);
+    }
+
+    #[Route("/allplat", name: "listplat")]
+    public function getPlats(PlatRepository $repo, SerializerInterface $serializer)
+    {
+        $plats = $repo->findAll();
+        $json = $serializer->serialize($plats, 'json', ['groups' => "plat"]);
+        $json1=json_encode($plats);
+        dd($json1);
+        //* Nous renvoyons une réponse Http qui prend en paramètre un tableau en format JSON
+
+        die;
+        return $this->render('plat/plat.html.twig', [
+            'plats' => $repo->findAll(),
+         ]);
     }
 
     #[Route('/new', name: 'app_plat_new', methods: ['GET', 'POST'])]
@@ -129,3 +147,24 @@ class PlatController extends AbstractController
         return $this->redirectToRoute('app_plat_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+
+
+
+
+// zedna 2 use  ou hedha  
+
+// #[Route("/allplat", name: "listplat")]
+// public function getPlats(PlatRepository $repo, SerializerInterface $serializer)
+// {
+//     $plats = $repo->findAll();
+//     $json = $serializer->serialize($plats, 'json', ['groups' => "plat"]);
+//     $json1=json_encode($plats);
+//     dd($json1);
+//     //* Nous renvoyons une réponse Http qui prend en paramètre un tableau en format JSON
+
+//     die;
+//     return $this->render('plat/plat.html.twig', [
+//         'plats' => $repo->findAll(),
+//      ]);
+// } 

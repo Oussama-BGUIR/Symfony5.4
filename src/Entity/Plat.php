@@ -7,6 +7,8 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 #[ORM\Entity(repositoryClass: PlatRepository::class)]
 class Plat
@@ -14,20 +16,27 @@ class Plat
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    #[Groups('plats')]
+    public ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length( min: 3, minMessage: 'nom doit avoir au minimum 3 caracteres',)]
     #[Assert\NotBlank(message: "vous devez mettre le nom du plat !!!")]
-    private ?string $nom = null;
+    #[Groups('plats')]
+
+    public ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\Length( min: 10, max: 500, minMessage: 'Vous devez decrire plus de details ',)]
     #[Assert\NotBlank(message:"vous devez decrire le plat")]
-    private ?string $description = null;
+    #[Groups('plats')]
+
+    public ?string $description = null;
 
     #[ORM\Column]
-    private ?bool $disponibilte = null;
+    #[Groups('plats')]
+
+    public ?bool $disponibilte = null;
 
     #[ORM\Column]
     #[Assert\NotBlank(message:"vous declarer les calories")]
@@ -37,16 +46,21 @@ class Plat
         notInRangeMessage: 'il faut que les calories du plat est équilibré (entre 250 et 700 calories))',
         
     )]
-    private ?int $calorie = null;
+    #[Groups('plats')]
+
+    public ?int $calorie = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    #[Groups('plats')]
+
+    public ?string $image = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: '0')]
     #[Assert\Positive(message:" donner un prix réel en dinar")]
     #[Assert\NotBlank(message:"donner un prix !")]
+    #[Groups('plats')]
 
-    private ?string $prix = null;
+    public ?string $prix = null;
 
     #[ORM\ManyToOne(inversedBy: 'plats')]
     #[ORM\JoinColumn(onDelete:"CASCADE")]
@@ -141,3 +155,13 @@ class Plat
         return $this;
     }
 }
+
+
+
+
+
+
+
+
+
+// aamalna groups ou use ou public f 3oudh private

@@ -1,0 +1,50 @@
+{% extends 'statistiques/statistiques.html.twig' %}
+
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h4>Statistique des Plats Par Menus</h4>
+    <canvas id="plat" width="400" height="100"></canvas>
+        <canvas id="menu" width="400" height="100"></canvas>
+
+{{dump()}}
+  
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+<script>
+    let plat = document.querySelector("#plat")
+    let platGraph = new Chart(plat, {
+        type: "pie",
+        data: {
+            labels: {{platprix|raw}},
+            datasets: [{
+                label: "Répartition des plats",
+                data: {{menucalorie|raw}},
+            
+                backgroundColor: ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
+                                    '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
+                                    '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', 
+                                    '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
+                                    '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', 
+                                    '#66664D', '#991AFF', '#E666FF', '#4DB3FF', '#1AB399',
+                                    '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', 
+                                    '#4D8066', '#809980', '#E6FF80', '#1AFF33', '#999933',
+                                    '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', 
+                                    '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
+                                                
+                    
+                
+            }]
+        }
+    })
+   
+</script>
+{% endblock %}

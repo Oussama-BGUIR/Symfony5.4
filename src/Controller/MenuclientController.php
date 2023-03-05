@@ -12,6 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Component\Pager\PaginatorInterface;
+
 class MenuclientController extends AbstractController
 {
 
@@ -19,12 +22,16 @@ class MenuclientController extends AbstractController
 
 
     #[Route('/menuclient', name: 'app_menuclient', methods: ['GET'])]
-    public function index(MenuRepository $menuRepository, PlatRepository $platRepository): Response
+    public function index(MenuRepository $menuRepository, PlatRepository $platRepository,PaginatorInterface $paginator, Request $request): Response
     {
-
-
+        $menus = $menuRepository->findAll();
+        $menus   = $paginator->paginate(
+            $menus  , /* query NOT result */
+            $request->query->getInt('page', 1),
+            3
+        );
         return $this->render('menuclient/menuclient.html.twig', [
-            'menus' => $menuRepository->findAll(),
+            'menus'=>$menus,
             // 'plats' => $platRepository->findBy(Id),
           // 'plats' => $platRepository->findOneBy(),
             'plats' => $platRepository->findAll(),       

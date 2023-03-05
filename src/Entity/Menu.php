@@ -9,28 +9,33 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 #[ORM\Entity(repositoryClass: MenuRepository::class)]
 class Menu
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    #[Groups('menus')]
+    public ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\Length( min: 3, minMessage: 'nom doit avoir au minimum 3 caracteres',)]
     #[Assert\NotBlank(message: "vous devez mettre le nom du menu!!!")]
-
-    private ?string $nom = null;
+    #[Groups('menus')]
+    public ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\Length( min: 50, max: 500, minMessage: 'Vous devez decrire plus de details ',)]
     #[Assert\NotBlank(message:"vous devez decrire le menu")]
-    private ?string $description = null;
+    #[Groups('menus')]
+    public ?string $description = null;
 
 
     #[ORM\Column]
-    private ?bool $disponibilite = null;
+    #[Groups('menus')]
+    public ?bool $disponibilite = null;
 
     #[ORM\Column]
     #[Assert\NotBlank(message:"vous declarer les calories")]
@@ -40,12 +45,14 @@ class Menu
         notInRangeMessage: 'il faut que les calories des plats sont équilibrés (entre 1500 et 2500 calories))',
         
     )]
-    private ?int $calorie = null;
+    #[Groups('menus')]
+    public ?int $calorie = null;
 
 
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    #[Groups('menus')]
+    public ?string $image = null;
 
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Plat::class)]
     private Collection $plats;
@@ -159,3 +166,16 @@ class Menu
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// aamalna groups ou use ou public f 3oudh private
