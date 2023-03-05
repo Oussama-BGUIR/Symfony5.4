@@ -1,4 +1,61 @@
-{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+
+
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+<form>
+
+  <div class="row">
+    <div class="col">
+    {{ form_label(form.semaine,"Semaine") }}
+     {{ form_widget(form.semaine,{ 'attr': {'class': 'form-control'} }) }}
+
+     {% if form_errors(form.semaine) is not empty %}
+      <div class="alert text-danger" >
+      {{ form_errors(form.semaine) }}
+        </div>
+        {% endif %}
+    </div>
+
+
+
+
+
+   
+    {# <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> #}
+
+  </div>
+
+      <div class="form-group">
+     {{ form_label(form.description,"Description") }}
+
+     {{ form_widget(form.description,{ 'attr': {'class': 'form-control'} }) }}
+
+      {% if form_errors(form.description) is not empty %}
+       <div class="alert text-danger" >
+        {{ form_errors(form.description) }}
+          </div>
+      {% endif %}
+    </div>
+
+
+  <button class="btn">{{ button_label|default('Save') }}</button>
+      {# <a href="{{ path('app_planning_index') }}">Revenir</a> #}
+      <button class="btn" href="{{ path('app_planning_index') }}"> Revenir</button>
+
 {{ form_end(form) }}
+</form>
+{# 
+
+                                                      <div class="form-group">
+                                                                 {{ form_label(form.nom,"Nom") }}
+                                                                 {{ form_widget(form.nom,{ 'attr': {'class': 'form-control'} }) }}
+                                                                 {% if form_errors(form.nom) is not empty %}
+                                                                     <div class="alert text-danger" >
+                                                                         {{ form_errors(form.nom) }}
+                                                                     </div>
+                                                                 {% endif %}
+                                                           </div>
+    
+ #}

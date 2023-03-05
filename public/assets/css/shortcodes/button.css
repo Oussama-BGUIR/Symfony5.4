@@ -144,7 +144,7 @@
 	font-family: rubik;
 }
 .btn {
-    background-color: #EFBB20;
+    background-color: #4FE9A4;
 }
 .btn:active,
 .btn:hover,
@@ -292,7 +292,7 @@
 .btn.orange:active,
 .btn.orange.active,
 .btn.orange:focus {
-    background-color: #df8800;
+    background-color: #4FE9A4;
     color: #fff;
 }
 /* Red */
@@ -468,20 +468,20 @@
 /* Orange */
 
 .btn.gradient.orange {
-	background: #ef940b; /* Old browsers */
-	background: -moz-linear-gradient(45deg,  #ef940b 0%, #ffd754 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(45deg,  #ef940b 0%,#ffd754 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(45deg,  #ef940b 0%,#ffd754 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: #4FE9A4; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #4FE9A4 0%, #4FE9A4 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(45deg,  #4FE9A4 0%,#4FE9A4 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(45deg,  #4FE9A4 0%,#4FE9A4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef940b', endColorstr='#ffd754',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	color: #fff;
 }
 .btn.gradient.orange:hover,
 .btn.gradient.orange:active,
 .btn.gradient.orange:focus {
-    background: #d68000; /* Old browsers */
-	background: -moz-linear-gradient(45deg,  #d68000 0%, #ffbf00 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(45deg,  #d68000 0%,#ffbf00 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(45deg,  #d68000 0%,#ffbf00 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: #4FE9A4; /* Old browsers */
+	background: -moz-linear-gradient(45deg,  #4FE9A4 0%, #4FE9A4 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(45deg,  #4FE9A4 0%,#4FE9A4 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(45deg,  #4FE9A4 0%,#4FE9A4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d68000', endColorstr='#ffbf00',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 	color: #fff;
 }
@@ -849,22 +849,22 @@
 /* Yellow */
 
 .btn-link.yellow {
-    color: #ecc731;
+    color: #4FE9A4;
 }
 .btn-link.yellow:hover,
 .btn-link.yellow:active,
 .btn-link.yellow:focus {
-    color: ##d4af19;
+    color: #4f78e9;
 }
 /* purple */
 
 .btn-link.purple {
-    color: #ae1af7;
+    color: #4FE9A4;
 }
 .btn-link.purple:hover,
 .btn-link.purple:active,
 .btn-link.purple:focus {
-    color: #9804e1;
+    color: #4FE9A4;
 }
 /* Dropdown */
 .dropdown-menu > li > a{

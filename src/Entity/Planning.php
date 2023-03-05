@@ -5,8 +5,10 @@ namespace App\Entity;
 use App\Repository\PlanningRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\component\validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: PlanningRepository::class)]
 class Planning
 {
@@ -14,22 +16,31 @@ class Planning
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-   
 
     #[ORM\Column(length: 255)]
-    /*#[Assert\NotBlank(message:"ce champ est obligatoire")]*/
+    #[Assert\Length( min: 2, minMessage: 'minimum 2 caracteres',)]
+    #[Assert\NotBlank(message: "vous devez mettre le nom du semaine!!!")]
     private ?string $semaine = null;
-
-    #[ORM\Column(length: 255)]
-   /* #[Assert\NotBlank(message:"ce champ est obligatoire")]*/
-    private ?string $description = null;
-
-
     
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?User $id_c = null;
+    #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length( min: 50, max: 500, minMessage: 'décrivez la semaine plus ',)]
+    #[Assert\NotBlank(message:"il faut décrire la semmaine !")]
+    private ?string $description = null;
 
+    #[ORM\OneToMany(mappedBy: 'planning', targetEntity: Cours::class)]
+    private Collection $courses;
+
+
+    public function __toString() {
+        return $this->semaine;
+    }
+    
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,20 +71,33 @@ class Planning
         return $this;
     }
 
-    public function getIdC(): ?user
+    /**
+     * @return Collection<int, Cours>
+     */
+    public function getCourses(): Collection
     {
-        return $this->id_c;
+        return $this->courses;
     }
 
-    public function setIdC(?user $id_c): self
+    public function addCourse(Cours $course): self
     {
-        $this->id_c = $id_c;
+        if (!$this->courses->contains($course)) {
+            $this->courses->add($course);
+            $course->setPlanning($this);
+        }
 
         return $this;
     }
 
-    public function __toString()
+    public function removeCourse(Cours $course): self
     {
-        return (string) $this->getIdC();
+        if ($this->courses->removeElement($course)) {
+            // set the owning side to null (unless already changed)
+            if ($course->getPlanning() === $this) {
+                $course->setPlanning(null);
+            }
+        }
+
+        return $this;
     }
 }

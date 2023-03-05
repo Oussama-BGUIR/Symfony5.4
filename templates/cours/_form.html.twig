@@ -1,4 +1,75 @@
-{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+
+
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+<form>
+
+  <div class="row">
+    <div class="col">
+    {{ form_label(form.nom,"Nom") }}
+     {{ form_widget(form.nom,{ 'attr': {'class': 'form-control'} }) }}
+          {% if form_errors(form.nom) is not empty %}
+      <div class="alert text-danger" >
+      {{ form_errors(form.nom) }}
+        </div>
+        {% endif %}
+    </div>
+
+      <div class="col">
+     {{ form_label(form.salle,"salle") }}
+
+     {{ form_widget(form.salle,{ 'attr': {'class': 'form-control'} }) }}
+          {% if form_errors(form.salle) is not empty %}
+      <div class="alert text-danger" >
+      {{ form_errors(form.salle) }}
+        </div>
+        {% endif %}
+    </div>
+
+  </div>
+
+
+<div class="form-group">
+   <div class="row">
+      <div class='col-sm-6'>
+       {{ form_label(form.duree,"Durée") }}
+         <div class="form-group">
+            <div class='input-group date' id='datetimepicker1'>
+               {# <input type='text' class="form-control" /> #}
+  
+               
+               <span class="input-group-addon">
+                  {{ form_widget(form.duree,{ 'attr': {'class': 'form-control'} }) }}
+                         {% if form_errors(form.duree) is not empty %}
+                        <div class="alert text-danger" >
+                        {{ form_errors(form.duree) }}
+                        </div>
+                        {% endif %}
+               </span>
+            </div>
+         </div>
+      </div>
+      <script type="text/javascript">
+         $(function () {
+             $('#datetimepicker1').datetimepicker();
+         });
+      </script>
+   </div>
+
+         <div class="col">
+     {{ form_label(form.planning,"plan") }}
+
+     {{ form_widget(form.planning,{ 'attr': {'class': 'form-control'} }) }}
+    </div>
+
+</div>
+
+
+  <button class="btn">{{ button_label|default('Save') }}</button>
+      {# <a href="{{ path('app_planning_index') }}">Revenir</a> #}
+      <button class="btn" href="{{ path('app_planning_index') }}"> Revenir</button>
+
 {{ form_end(form) }}
+</form>

@@ -5,7 +5,8 @@ namespace App\Entity;
 use App\Repository\CoursRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\component\validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: CoursRepository::class)]
 class Cours
@@ -16,23 +17,31 @@ class Cours
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotNull(message :"nom est null ")]
+    #[Assert\Length( min: 4, minMessage: 'minimum 4 caracteres',)]
+    #[Assert\NotBlank(message: "vous devez mettre le nom du semaine!!!")]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+
+
+        // /**
+        //  * @var string A "Y-m-d H:i:s" formatted value
+        //  */
+        // #[Assert\DateTime]
+        // protected $createdAt;
+    
+  
+    #[Assert\NotBlank(message: "il faut une durée valide")]
     private ?\DateTimeInterface $duree = null;
 
-
-
     #[ORM\Column(length: 255)]
-    #[Assert\Length(MinLength:5,message :"le prix positive ou nulle")]
+    #[Assert\Length( min: 2, minMessage: 'donner le nom du salle',)]
+    #[Assert\NotBlank(message: "il faut un nom précis")]
     private ?string $salle = null;
-    
-    
 
-
-    #[ORM\ManyToOne(inversedBy: 'id_c')]
-    private ?Planning $id_p = null;
+    #[ORM\ManyToOne(inversedBy: 'courses')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Planning $planning = null;
 
     public function getId(): ?int
     {
@@ -75,17 +84,15 @@ class Cours
         return $this;
     }
 
-    public function getIdP(): ?planning
+    public function getPlanning(): ?Planning
     {
-        return $this->id_p;
+        return $this->planning;
     }
 
-    public function setIdP(?planning $id_p): self
+    public function setPlanning(?Planning $planning): self
     {
-        $this->id_p = $id_p;
+        $this->planning = $planning;
 
         return $this;
     }
-
-
 }

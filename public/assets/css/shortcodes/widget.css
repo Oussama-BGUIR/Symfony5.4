@@ -293,10 +293,10 @@
     font-weight: 600;
 }
 .calendar_wrap th ,tfoot td { 
-	background:#ff5e14;
+	background:#4FE9A4;
 }
 .widget_calendar caption {
-	border-color: #ff5e14;
+	border-color: #4FE9A4;
 }
 /*widget tags-list*/
 .widget_tag_cloud a {

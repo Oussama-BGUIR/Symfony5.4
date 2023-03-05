@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
-use App\Form\Cours1Type;
+use App\Form\CoursType;
 use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,19 +21,11 @@ class CoursController extends AbstractController
         ]);
     }
 
-    #[Route('/f', name: 'app_coursF_index', methods: ['GET'])]
-    public function indexF(CoursRepository $coursRepository): Response
-    {
-        return $this->render('cours/indexF.html.twig', [
-            'cours' => $coursRepository->findAll(),
-        ]);
-    }
-
     #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CoursRepository $coursRepository): Response
     {
         $cour = new Cours();
-        $form = $this->createForm(Cours1Type::class, $cour);
+        $form = $this->createForm(CoursType::class, $cour);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,7 +51,7 @@ class CoursController extends AbstractController
     #[Route('/{id}/edit', name: 'app_cours_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Cours $cour, CoursRepository $coursRepository): Response
     {
-        $form = $this->createForm(Cours1Type::class, $cour);
+        $form = $this->createForm(CoursType::class, $cour);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

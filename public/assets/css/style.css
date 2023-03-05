@@ -301,13 +301,13 @@
     float: left;
     vertical-align: middle;
     padding: 0;
-    color: #EFBB20;
+    color: #4FE9A4;
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
-    width: 140px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     position: relative;
     z-index: 9;
 	transition:all 0.5s;
@@ -321,19 +321,19 @@
     vertical-align: middle;
 }
 .menu-logo img{
-    max-height: 60px;
+    max-height: 150px;
 	width: auto;
-	max-width: 140px;
+	max-width: 150px;
 	
 }
 .menu-logo span{
     font-size: 20px;
-    color: #EFBB20;
+    color: #4FE9A4;
     letter-spacing: 20px;
 }
 .is-fixed .menu-logo{
-    height: 70px;
-    width: 140px;
+    height: 150px;
+    width: 150px;
 	transition:all 0.5s;
 	-webkit-transition:all 0.5s;
 	-moz-transition:all 0.5s;
@@ -342,8 +342,8 @@
 @media only screen and (max-width: 767px) {
     .menu-logo,
 	.is-fixed .menu-logo{
-        width: 100px;
-		max-width: 100px;
+        width: 150px;
+		max-width: 150px;
 		height:50px;
     }
 	.menu-logo img{
@@ -370,7 +370,7 @@
     position: relative;
 }
 .navbar-toggler {
-    border: 0 solid #efbb20;
+    border: 0 solid #4FE9A4;
     font-size: 16px;
     line-height: 24px;
     margin: 32px 0 30px 15px;
@@ -414,7 +414,7 @@
 }
 .menu-links .nav > li > a:hover {
     background-color: transparent;
-    color: #efbb20;
+    color: #4FE9A4;
 }
 .menu-links .nav > li > a:active,
 .menu-links .nav > li > a:focus {
@@ -423,10 +423,10 @@
 .menu-links .nav > li.active > a,
 .menu-links .nav > li.current-menu-item > a {
     background-color: transparent;
-    color: #EFBB20;
+    color: #4FE9A4;
 }
 .menu-links .nav > li:hover > a {
-    color: #EFBB20;
+    color: #4FE9A4;
 }
 .menu-links .nav > li:hover > a:after {
     content: "";
@@ -488,11 +488,11 @@
 }
 .menu-links .nav > li .sub-menu li a:hover {
     background-color: #F2F2F2;
-    color: #EFBB20;
+    color: #4FE9A4;
     text-decoration: none;
 }
 .menu-links .nav > li .sub-menu li:hover > a {
-    color: #EFBB20;
+    color: #4FE9A4;
 }
 .menu-links .nav > li .sub-menu li:last-child {
     border-bottom: 0px;
@@ -614,7 +614,7 @@
 	font-weight: 500;
 }
 .menu-links .nav > li .mega-menu > li ul a:hover {
-    color: #EFBB20;
+    color: #4FE9A4;
 }
 .menu-links .nav .mega-menu a i {
     font-size: 14px;
@@ -1539,7 +1539,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
     margin: 0;
 }
 .comments-area .comment-form p input[type="submit"] {
-    background-color: #EFBB20;
+    background-color: #4FE9A4;
     border: none;
     border-radius: 0;
     border-style: solid;
@@ -1555,7 +1555,7 @@ ol.comment-list li.comment .comment-respond .comment-form p {
 .comments-area .comment-form p input[type="submit"]:hover,
 .comments-area .comment-form p input[type="submit"]:focus,
 .comments-area .comment-form p input[type="submit"]:active {
-    background-color: #ff7800;
+    background-color: #4FE9A4;
     border-color: #6ab33e;
     color: #fff;
 }
@@ -1864,12 +1864,15 @@ button.back-to-top {
 }
 .pt-logo{
 	padding:20px 0;
+	max-height: 150px;
+	max-width: 150px;
 }
 
 .pt-social-link,
 .pt-btn-join,
 .pt-logo{
 	display: flex;
+
     align-items: center;
 }
 /*==== LOADING ====*/
@@ -1884,7 +1887,8 @@ button.back-to-top {
     z-index: 999999999;
     background-image: url(../images/loading.gif);
     background-repeat: no-repeat;
-    background-size: 60px;
+	background-color: #06bbae;
+    
     background-position: center;
 }
 /*========================
@@ -1972,7 +1976,7 @@ button.back-to-top {
 	display: inline-block;
 	font-size: 13px;
 	text-transform: capitalize;
-	font-family: ;
+	
 	margin-right: 5px;
 }
 .media-post li a{
@@ -2186,9 +2190,9 @@ button.back-to-top {
 .ovpr-dark:after{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff5e14+0,ff8e14+100 */
 background: #ff5e14; /* Old browsers */
-background: -moz-linear-gradient(45deg, #ff5e14 0%, #ff8e14 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(45deg, #ff5e14 0%,#ff8e14 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(45deg, #ff5e14 0%,#ff8e14 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background: -moz-linear-gradient(45deg, #3db47f 0%, #4FE9A4 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg, #3db47f 0%,#4FE9A4 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg, #3db47f 0%,#4FE9A4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', endColorstr='#ff8e14',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 /* Event Box */
@@ -2319,9 +2323,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
 .ovbl-dark:after{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#391800+0,001739+38,321001+71,011e32+100 */
 background: #391800; /* Old browsers */
-background: -moz-linear-gradient(left, #391800 0%, #001739 38%, #321001 71%, #011e32 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #391800 0%,#001739 38%,#321001 71%,#011e32 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #391800 0%,#001739 38%,#321001 71%,#011e32 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background: -moz-linear-gradient(left, #003900 0%, #001739 38%, #003900 71%, #011e32 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #003900 0%,#001739 38%,#003900 71%,#011e32 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #003900 0%,#001739 38%,#003900 71%,#011e32 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', endColorstr='#011e32',GradientType=1 ); /* IE6-9 */
 }
 .our-story{
@@ -2823,11 +2827,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 	border: 0px solid #E9E9E9;
 }
 .pricingtable-main{
-	background: #ff5e14; /* Old browsers */
-	background: -moz-linear-gradient(45deg, #ff5e14 0%, #ff8e14 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(45deg, #ff5e14 0%,#ff8e14 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(45deg, #ff5e14 0%,#ff8e14 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', endColorstr='#ff8e14',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: #4FE9A4; /* Old browsers */
+	background: -moz-linear-gradient(45deg, #012049 0%, #4FE9A4 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(45deg, #012049 0%,#4FE9A4 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(45deg, #012049 0%,#4FE9A4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4FE9A4', endColorstr='#4FE9A4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .pricingtable-title {
 	background-color: rgba(255,255,255,0.2);
@@ -3001,11 +3005,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 	z-index:-1;
 	width:100%;
 	height:100%;
-	background: #ff5e14; /* Old browsers */
-	background: -moz-linear-gradient(45deg, #ff5e14 0%, #ff8e14 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(45deg, #ff5e14 0%,#ff8e14 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(45deg, #ff5e14 0%,#ff8e14 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', endColorstr='#ff8e14',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background: #012049; /* Old browsers */
+	background: -moz-linear-gradient(45deg, #012049 0%, #4FE9A4 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(45deg, #012049 0%,#4FE9A4 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(45deg, #012049 0%,#4FE9A4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4FE9A4', endColorstr='#4FE9A4',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .account-form-inner {
     width: 100%;

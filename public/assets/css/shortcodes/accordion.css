@@ -26,7 +26,7 @@
 .acod-head a,
 .acod-head a:hover,
 .acod-head a.collapsed:hover {
-    color: #EFBB20;
+    color: #4FE9A4;
 }
 .acod-head a.collapsed,
 .acod-head a.collapsed:after {
@@ -36,7 +36,7 @@
     font-family:"themify";
     content: "\e622";
     float: right;
-    color: #EFBB20;
+    color: #4FE9A4;
     font-size: 16px;
 	letter-spacing: -2px;
     position: absolute;

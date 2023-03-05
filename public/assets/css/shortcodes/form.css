@@ -276,7 +276,7 @@ textarea.form-control {
 .input-rating input[type=radio] + label:before {
     background-color: transparent;
     border: none;
-    color: #ffd925;
+    color: #4FE9A4;
     content: "\f006";
     display: inline-block;
     font-family: FontAwesome;
@@ -303,7 +303,7 @@ textarea.form-control {
 /*simple rating list*/
 
 .rating-bx {
-    color: #ffc300;
+    color: #4FE9A4;
     font-size: 14px;
 }
 .rating-bx i {
@@ -329,7 +329,7 @@ blockquote {
     position: relative;
     background: #f6f6f6;
     clear: both;
-    border-left: 4px solid #EFBB20;
+    border-left: 4px solid #4FE9A4;
 }
 blockquote p {
     font-size: 18px;
@@ -340,7 +340,7 @@ blockquote p {
 blockquote:before {
     content: '\f10d';
     font-family: "FontAwesome";
-    color: #EFBB20;
+    color: #4FE9A4;
     font-size: 35px;
     position: absolute;
     left: 20px;
