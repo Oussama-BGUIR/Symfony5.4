@@ -56,7 +56,8 @@
 	<link rel="stylesheet" type="text/css" href="admin/assets/css/dashboard.css">
 	<link class="skin" rel="stylesheet" type="text/css" href="admin/assets/css/color/color-1.css">
 {% endblock %}	
- 
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+        {% block stylesheets %}{% endblock %}
 </head>
 
 {% block body %}
@@ -320,6 +321,10 @@
 		                	</li>
 							<li>
 		                		<a href="http://127.0.0.1:8000/fiche" class="ttr-material-button"><span class="ttr-label">Gerer fiche</span></a>
+		                	</li>
+							<li>
+		                		<a href="http://127.0.0.1:8000/main" class="ttr-material-button"><span class="ttr-label">Gerer Calendar</span></a>
+
 		                	</li>
 		                
 		                </ul>
@@ -691,9 +696,13 @@
 	</main>
 	<div class="ttr-overlay"></div>
 
+
+        
 <!-- External JavaScripts -->
     {% block js %}
         <script src="https://kit.fontawesome.com/6279634e99.js" crossorigin="anonymous"></script>
+		
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/vendors/bootstrap/js/popper.min.js"></script>

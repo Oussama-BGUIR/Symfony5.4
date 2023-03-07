@@ -3,7 +3,21 @@
 {% block title %}Fiche index{% endblock %}
 
 {% block body %}
-    <h1>Fiche index</h1>
+
+{% for flash_message in app.flashes('error') %}
+                                <div class="alert alert-danger">{{ flash_message }}</div>
+                            {% endfor %}
+              {% for flash_message in app.flashes('success') %}
+                                <div class="alert alert-success">{{ flash_message }}</div>
+                            {% endfor %}
+   <div style="text-align:center">
+        <h2>Chercher une fiche</h2>
+    <input id="searchbar" onkeyup="fiche()" type="text"
+           name="search" placeholder="Search ..">
+
+           <br>
+           <br>
+</div>
 
     <table class="table">
         <thead>
@@ -12,24 +26,22 @@
                 <th>Nom</th>
                 <th>Prenom</th>
                 <th>Email</th>
-                <th>Date</th>
+
                 <th>numero</th>
-                <th>Duree</th>
+        
                 <th>Description</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for fiche in fiches %}
+        {% for fiche in Fiche %}
             <tr>
-                <td>{{ fiche.id }}</td>
-                <td>{{ fiche.nom }}</td>
-                <td>{{ fiche.prenom }}</td>
-                <td>{{ fiche.email }}</td>
-                <td>{{ fiche.numtel }}</td>
-                <td>{{ fiche.date ? fiche.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ fiche.duree }}</td>
-                <td>{{ fiche.description }}</td>
+                <td class="tcell">{{ fiche.id }}</td>
+                <td class="tcell">{{ fiche.nom }}</td>
+                <td class="tcell">{{ fiche.prenom }}</td>
+                <td class="tcell">{{ fiche.email }}</td>
+                <td class="tcell">{{ fiche.numtel }}</td>
+                <td class="tcell">{{ fiche.description }}</td>
                 <td>
                     <button class=" btn "><a href="{{ path('app_fiche_show', {'id': fiche.id}) }}">Afficher</button> <br> <br>
                     <button class=" btn "><a href="{{ path('app_fiche_edit', {'id': fiche.id}) }}">Modifier</button> <br> <br>
@@ -44,6 +56,31 @@
         {% endfor %}
         </tbody>
     </table>
-
+<div class="align-center"> {{ knp_pagination_render(Fiche) }}</div> <br>
     <a href="{{ path('app_fiche_new') }}" class="btn btn-success">Creer une fiche</a>
+
+
+
+    <script>
+
+        // JavaScript code
+        function fiche() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('tcell');
+
+            for (i = 0; i < x.length; i++) {
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display="none";
+                }
+                else {
+                    x[i].style.display="list-item";
+                }
+            }
+        }
+
+    </script>
+
+
+
 {% endblock %}

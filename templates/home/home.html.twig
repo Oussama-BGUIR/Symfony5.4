@@ -34,6 +34,8 @@
         <script src="assets/js/respond.min.js"></script>
         <![endif]-->
   {% block css %}      
+
+              {# <link rel="stylesheet" href="{{asset('bundles/mercuryseriesflashy/css/flashy.css')}}"> #}
         <!-- All PLUGINS CSS ============================================= -->
         <link rel="stylesheet" type="text/css" href="assets/css/assets.css">
         
@@ -53,6 +55,7 @@
         <link rel="stylesheet" type="text/css" href="assets/vendors/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/revolution/css/settings.css">
         <link rel="stylesheet" type="text/css" href="assets/vendors/revolution/css/navigation.css">
+       
         <!-- REVOLUTION SLIDER END -->	
     {% endblock %}
 </head>
@@ -138,6 +141,8 @@
                                 <li class="nav-dashboard"><a href="http://127.0.0.1:8000/home">Consultation en ligne<i class="fa fa-chevron-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="http://127.0.0.1:8000/rdv/new">prendre un rendez-vous</a></li>
+                                         <li><a href="http://127.0.0.1:8000/mainclient">Voir Calendrier</a></li>
+
                                     </ul>
                                     
                                 </li>
@@ -1035,6 +1040,8 @@
 
     <!-- External JavaScripts -->
     {% block js %}
+    {# <script src="{{asset('bundles/mercuryseriesflashy/js/flashy.js')}}"> </script> #}
+
         <script src="https://kit.fontawesome.com/6279634e99.js" crossorigin="anonymous"></script>
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/vendors/bootstrap/js/popper.min.js"></script>
@@ -1154,7 +1161,9 @@
         });	
         {% endblock %}
         </script>
+        
     {% endblock %}
+{# {{include('@MercurySeriesFlashy/flashy.html.twig')}} #}
     </body>
 {% endblock %}
 </html>

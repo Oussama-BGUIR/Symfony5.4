@@ -6,6 +6,7 @@ use App\Entity\Rdv;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class RdvType extends AbstractType
 {
@@ -15,9 +16,14 @@ class RdvType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('date')
+            ->add('date', DateTimeType::class, [
+                'date_widget' => 'single_text',
+                'time_widget' => 'single_text'
+            ])
             ->add('numtel')
             ->add('description')
+            ->add('nom_nutritioniste')
+            
             
         ;
     }

@@ -2,9 +2,23 @@
 
 {% block title %}Rdv index{% endblock %}
 
-{% block body %}
-    <h1>Rdv index</h1>
 
+{% block body %}
+
+{% for flash_message in app.flashes('error') %}
+                                <div class="alert alert-danger">{{ flash_message }}</div>
+                            {% endfor %}
+                            {% for flash_message in app.flashes('success') %}
+                                <div class="alert alert-success">{{ flash_message }}</div>
+                            {% endfor %}
+<div style="text-align:center">
+        <h2>Chercher un rendez-vous</h2>
+    <input id="searchbar" onkeyup="rdv()" type="text"
+           name="search" placeholder="Search ..">
+
+           <br>
+           <br>
+</div>
     <table class="table">
         <thead>
             <tr>
@@ -19,15 +33,15 @@
             </tr>
         </thead>
         <tbody>
-        {% for rdv in rdvs %}
+        {% for rdv in Rdv %}
             <tr>
-                <td>{{ rdv.id }}</td>
-                <td>{{ rdv.nom }}</td>
-                <td>{{ rdv.prenom }}</td>
-                <td>{{ rdv.email }}</td>
-                <td>{{ rdv.date ? rdv.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ rdv.numtel }}</td>
-                <td>{{ rdv.description }}</td>
+                <td class="tcell">{{ rdv.id }}</td>
+                <td class="tcell">{{ rdv.nom }}</td>
+                <td class="tcell">{{ rdv.prenom }}</td>
+                <td class="tcell">{{ rdv.email }}</td>
+                <td class="tcell">{{ rdv.date ? rdv.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="tcell">{{ rdv.numtel }}</td>
+                <td class="tcell">{{ rdv.description }}</td>
                 
                 <td>
                 
@@ -44,6 +58,36 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="align-center"> {{ knp_pagination_render(Rdv) }}</div>
+   
 
     <a href="{{ path('app_rdv_new') }}" class="btn btn-success">Creer un rendez_vous</a>
+
+
+
+
+    <script>
+
+        // JavaScript code
+        function rdv() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('tcell');
+
+            for (i = 0; i < x.length; i++) {
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display="none";
+                }
+                else {
+                    x[i].style.display="list-item";
+                }
+            }
+        }
+
+    </script>
+
+
+
+
+
 {% endblock %}

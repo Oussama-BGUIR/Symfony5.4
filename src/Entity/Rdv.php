@@ -45,11 +45,12 @@ class Rdv
     #[Assert\NotBlank(message:"Vous devez decrire plus de details")]
     private $description;
 
-    #[ORM\OneToOne(targetEntity: Fiche::class, cascade: ['persist', 'remove'])]
-    private $Fiches;
+    #[ORM\ManyToOne(inversedBy: 'fiche_nom')]
+    private ?Fiche $nom_nutritioniste = null;
+
+ 
 
     
-
     public function getId(): ?int
     {
         return $this->id;
@@ -127,15 +128,19 @@ class Rdv
         return $this;
     }
 
-    // public function getFiches(): ?Fiche
-    // {
-    //     return $this->Fiches;
-    // }
+    public function getNomNutritioniste(): ?Fiche
+    {
+        return $this->nom_nutritioniste;
+    }
 
-    // public function setFiches(?Fiche $Fiches): self
-    // {
-    //     $this->Fiches = $Fiches;
+    public function setNomNutritioniste(?Fiche $nom_nutritioniste): self
+    {
+        $this->nom_nutritioniste = $nom_nutritioniste;
 
-    //     return $this;
-    // }
+        return $this;
+    }
+
+   
+
+
 }

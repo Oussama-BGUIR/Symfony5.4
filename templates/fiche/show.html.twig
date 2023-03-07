@@ -3,6 +3,8 @@
 {% block title %}Fiche{% endblock %}
 
 {% block body %}
+
+
     <h1>Fiche</h1>
 
     <table class="table">
@@ -23,14 +25,8 @@
                 <th>Email</th>
                 <td>{{ fiche.email }}</td>
             </tr>
-            <tr>
-                <th>Date</th>
-                <td>{{ fiche.date ? fiche.date|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Duree</th>
-                <td>{{ fiche.duree }}</td>
-            </tr>
+
+
             <tr>
                 <th>Description</th>
                 <td>{{ fiche.description }}</td>

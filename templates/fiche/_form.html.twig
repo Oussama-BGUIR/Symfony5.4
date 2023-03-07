@@ -40,14 +40,7 @@
  
 
 
-<div class="form-group">
-    {{ form_label(form.duree," Durée") }}
-    {{ form_widget(form.duree,{ 'attr': {'class': 'form-control'} }) }} 
-    {% if form_errors(form.duree) is not empty %}
-    <div class="alert alert-danger" >
-    {{ form_errors(form.duree) }}
-</div>
-{% endif %}
+
 
 <div class="form-group">
     {{ form_label(form.description," Description") }}
@@ -55,15 +48,6 @@
     {% if form_errors(form.description) is not empty %}
     <div class="alert alert-danger" >
     {{ form_errors(form.description) }}
-</div>
-{% endif %}
-
- <div class="form-group">
-    {{ form_label(form.date," Date") }}
-    {{ form_widget(form.date,{ 'attr': {'class': 'form-control'} }) }} 
-    {% if form_errors(form.date) is not empty %}
-    <div class="alert alert-danger" >
-    {{ form_errors(form.date) }}
 </div>
 {% endif %}
 

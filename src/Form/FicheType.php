@@ -6,7 +6,10 @@ use App\Entity\Fiche;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
+use Symfony\Component\Validator\Constraints\NotNull;
+
 class FicheType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -15,15 +18,7 @@ class FicheType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('date',DateType::class, [
-                // renders it as a single text box
-                'required' => true,
-                'widget' => 'single_text'
-            ])
-        
-
             ->add('numtel')
-            ->add('duree')
             ->add('description')
         ;
     }

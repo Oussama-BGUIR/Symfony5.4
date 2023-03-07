@@ -3,6 +3,8 @@
 <head>
 {% block meta %}
 
+
+
 	<!-- META ============================================= -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +46,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/assets.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('admin/assets/vendors/calendar/fullcalendar.css')}}">
 	
+	
 	<!-- TYPOGRAPHY ============================================= -->
 	<link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/typography.css')}}">
 	
@@ -55,12 +58,16 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/dashboard.css')}}">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/color/color-1.css')}}">
 {% endblock %}	
+        
  
 </head>
 
 
 <body class="ttr-opened-sidebar ttr-pinned-sidebar">
-	
+
+
+
+      
 	<!-- header start -->
 	<header class="ttr-header">
 		<div class="ttr-header-wrapper">
@@ -227,6 +234,11 @@
 		                	</li>
 							<li>
 		                		<a href="http://127.0.0.1:8000/fiche" class="ttr-material-button"><span class="ttr-label">Gerer fiche</span></a>
+
+		                	</li>
+							<li>
+		                		<a href="http://127.0.0.1:8000/main" class="ttr-material-button"><span class="ttr-label">Gerer Calendar</span></a>
+
 		                	</li>
 		                
 		                </ul>
@@ -261,10 +273,14 @@
 		<div class="container-fluid">
 			{% block body %}
 			
+
+      
 			{% endblock %}
 		</div>
 	</main>
 	<div class="ttr-overlay"></div>
+
+
 
 <!-- External JavaScripts -->
     {% block js %}
