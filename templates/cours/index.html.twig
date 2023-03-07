@@ -1,30 +1,35 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Cours index</h1>
+    <h1>Cours</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Duree</th>
-                <th>Salle</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+   
         {% for cour in cours %}
-            <tr>
-                <td>{{ cour.id }}</td>
-                <td>{{ cour.nom }}</td>
-                <td>{{ cour.duree ? cour.duree|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ cour.salle }}</td>
-                <td>
-                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}">show</a>
-                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
-                </td>
-            </tr>
+
+
+
+        
+<ul class="list-group">
+        <div style="text-align:center"> 
+        
+        <li class="list-group-item active">{{ cour.id }}</li>
+        <li class="list-group-item">{{ cour.nom }}</li>
+        <li class="list-group-item">{{ cour.duree ? cour.duree|date('Y-m-d H:i:s') : '' }}</li>
+
+        <li class="list-group-item">{{ cour.salle }}</li>
+
+       <a type="button" class="btn btn-success" href="{{ path('app_cours_show', {'id': cour.id}) }}">consulter</a>
+       <a type="button" class="btn btn-success" href="{{ path('app_cours_edit', {'id': cour.id}) }}">modifier</a>
+
+
+        </div> 
+<br> 
+
+<br> 
+
+    </ul>
+
+ 
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
@@ -32,6 +37,11 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="align-center"> {{ knp_pagination_render(cours) }}</div>
 
-    <a href="{{ path('app_cours_new') }}">Create new</a>
+             <div style="text-align:center"> 
+
+           <a type="button" class="btn btn-success" href="{{ path('app_cours_new') }}">ajouter un cours</a>
+        </div> 
+
 {% endblock %}

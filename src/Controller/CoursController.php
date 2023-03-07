@@ -10,16 +10,26 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Knp\Component\Pager\PaginatorInterface;
+
 #[Route('/cours')]
 class CoursController extends AbstractController
 {
     #[Route('/', name: 'app_cours_index', methods: ['GET'])]
-    public function index(CoursRepository $coursRepository): Response
+    public function index(CoursRepository $coursRepository,  Request $request,PaginatorInterface $paginator): Response
     {
+        $cours = $coursRepository->findAll();
+        $cours   = $paginator->paginate(
+            $cours  , /* query NOT result */
+            $request->query->getInt('page', 1),
+            3
+        );
         return $this->render('cours/index.html.twig', [
-            'cours' => $coursRepository->findAll(),
+            'cours' => $cours
         ]);
     }
+
+   
 
     #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CoursRepository $coursRepository): Response

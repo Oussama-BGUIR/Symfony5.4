@@ -9,15 +9,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 #[Route('/planning')]
 class PlanningController extends AbstractController
 {
     #[Route('/', name: 'app_planning_index', methods: ['GET'])]
-    public function index(PlanningRepository $planningRepository): Response
+    public function index(PlanningRepository $planningRepository,  Request $request,PaginatorInterface $paginator): Response
     {
+        
+        $plannings = $planningRepository->findAll();
+        $plannings   = $paginator->paginate(
+            $plannings  , /* query NOT result */
+            $request->query->getInt('page', 1),
+            3
+        );
         return $this->render('planning/index.html.twig', [
-            'plannings' => $planningRepository->findAll(),
+            'plannings' => $plannings
         ]);
     }
 

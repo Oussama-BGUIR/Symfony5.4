@@ -21,16 +21,9 @@ class Cours
     #[Assert\NotBlank(message: "vous devez mettre le nom du semaine!!!")]
     private ?string $nom = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-
-
-        // /**
-        //  * @var string A "Y-m-d H:i:s" formatted value
-        //  */
-        // #[Assert\DateTime]
-        // protected $createdAt;
-    
-  
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: 'datetime')]
+    #[Assert\GreaterThan("today", message:"La date doit être dés maintenant.")]
     #[Assert\NotBlank(message: "il faut une durée valide")]
     private ?\DateTimeInterface $duree = null;
 

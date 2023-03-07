@@ -1,35 +1,41 @@
 {% extends 'admin.html.twig' %}
 
 {% block body %}
-    <h1>Planning index</h1>
+    <h1>Les Plans des semaines</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Semaine</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+ 
         {% for planning in plannings %}
-            <tr>
-                <td>{{ planning.id }}</td>
-                <td>{{ planning.semaine }}</td>
-                <td>{{ planning.description }}</td>
-                <td>
-                    <a href="{{ path('app_planning_show', {'id': planning.id}) }}">show</a>
-                    <a href="{{ path('app_planning_edit', {'id': planning.id}) }}">edit</a>
-                </td>
-            </tr>
+
+
+<ul class="list-group">
+        <div style="text-align:center"> 
+        
+        <li class="list-group-item active">{{ planning.id }}</li>
+        <li class="list-group-item">{{ planning.semaine }}</li>
+        <li class="list-group-item">{{ planning.description }}</li>
+
+       <a type="button" class="btn btn-success" href="{{ path('app_planning_show', {'id': planning.id}) }}">consulter</a>
+       <a type="button" class="btn btn-success" href="{{ path('app_planning_edit', {'id': planning.id}) }}">modifier</a>
+
+
+        </div> 
+<br> 
+
+<br> 
+
+    </ul>
+
+  
         {% else %}
             <tr>
                 <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    <div class="align-center"> {{ knp_pagination_render(plannings) }}</div>
 
-    <a href="{{ path('app_planning_new') }}">Create new</a>
+            <div style="text-align:center"> 
+       <a type="button" class="btn btn-success" href="{{ path('app_planning_new') }}">ajouter</a>
+        </div> 
+
 {% endblock %}
