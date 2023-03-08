@@ -1,0 +1,127 @@
+{% extends 'basePanier.html.twig' %}
+{% block body %}
+
+        <main id="main" class="main">
+              
+            <div class="pagetitle">
+              
+            </div>
+         
+        
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="container-fluid text-right">
+                                    <a href="{{ path('app_produithome_home') }}"> <button class="btn">{{ button_label|default('Ajouter des produits') }}</button></a>
+                                </div>
+                                <h3 class="card-title">List des Produits</h3>
+                                <table class="table">
+                                
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Produits</th>
+                                        <th scope="col">Prix</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Quantite</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Actions</th>
+                                        
+
+
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for p in dataPanier  %}
+                                        <tr>
+                                            {# <td class="product-thumbnail"><a href="#"><img src="/uploads/images/{{p.produit.image}}" alt="{{p.produit.nom}}"></a></td>  #}
+
+                                            <td>{{p.produit.nom }}</td>
+                                            <td class="text-right">{{p.produit.prix }} dt</td>
+                                            <td>{{p.produit.description }}</td>
+                                            <td>{{p.quantite }}</td>
+                                            <td>{{p.quantite * p .produit.prix }}</td>
+                                            
+                                            <td>
+
+                                          
+                                            <a href="{{path("add", {id: p.produit.id})}}"> <button class="btn">{{ button_label|default('+') }}</button></a>
+                                            <a href="{{path("remove", {id: p.produit.id})}}"> <button class="btn">{{ button_label|default('-') }}</button></a>
+                                            <a href="{{path("deleteCommande", {id: p.produit.id})}}"> <button class="btn">{{ button_label|default('x') }}</button></a>
+
+                                            </td>
+                                            
+
+                                        </tr>
+
+                                        {% else  %}
+                                        <tr>
+                                            <td colspan="5" class="text-center">Votre panier est vide </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="3">Total</td>
+                                        <td class="text-end">{{ total }}</td>
+                                       
+
+                                    </tr>
+                                    </tfoot>
+
+                                </table>
+                                    <div class="container-fluid text-right">
+                                            <form action="/create-checkout-session" method="POST">
+                                            <button type="submit" id="checkout-button" 
+                                                                    class="btn">Payer | {{ total }} TND</button>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           <body>
+
+  </body>
+        </main>
+{% endblock %} 
+
+{% block js %}
+            <script src="https://js.stripe.com/v3/"></script>
+
+            <script type="text/javascript">/*clé public  */
+                var stripe = Stripe('pk_test_51MgySyD6nqQMhhhlVZ5Fpl3nlSAxDLo3wY4UupI7engVevUGX2tcMPJtSJeMtwi09WeCEnDVmjTnUWOhYiAjWTH600LBV5zIRU');
+                var checkoutButton = document.getElementById("checkout-button");
+
+                checkoutButton.addEventListener("click", function () {
+                fetch("/create-checkout-session", {
+                    method: "POST",
+                })
+                    .then(function (response) {
+                    return response.json();
+                    })
+                    .then(function (session) {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                    })
+                    .then(function (result) {
+                    // If redirectToCheckout fails due to a browser or network
+                    // error, you should display the localized error message to your
+                    // customer using error.message.
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                    })
+                    .catch(function (error) {
+                    console.error("Error:", error);
+                    });
+                });
+                </script>
+</html>
+{% endblock %}
+
+
+

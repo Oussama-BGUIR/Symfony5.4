@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block body %}
+<input id="searchbar" onkeyup="search_user()" type="text"
+           name="search" placeholder="Search ..">
+    <h1>Produits</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Categorie</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td class="tcell">{{ produit.id }}</td>
+                <td class="tcell">{{ produit.nom }}</td>
+                <td class="tcell">{{ produit.prix }}</td>
+                <td class="tcell">{{ produit.description }}</td>
+                <td class="tcell">{{ produit.Categorie }}</td>
+                <td class="tcell">{{ produit.image }}</td>
+                
+                <td>
+                    <a href="{{ path('app_produit_show', {'id': produit.id}) }}"> <button class="btn">{{ button_label|default('show') }}</button></a>
+                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}"><button class="btn">{{ button_label|default('edit') }}</button></a>
+                    <a href="{{ path('app_produit_delete', {'id': produit.id}) }}"><button class="btn">{{ button_label|default('delete') }}</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produit_new') }}"><button class="btn">{{ button_label|default('Create new') }}</button></a>
+<script>
+
+        // JavaScript code
+        function search_user() {
+            let input = document.getElementById('searchbar').value
+            input=input.toLowerCase();
+            let x = document.getElementsByClassName('tcell');
+
+            for (i = 0; i < x.length; i++) {
+                if (!x[i].innerHTML.toLowerCase().includes(input)) {
+                    x[i].style.display="none";
+                }
+                else {
+                    x[i].style.display="list-item";
+                }
+            }
+        }
+
+    </script>
+{% endblock %}
+
