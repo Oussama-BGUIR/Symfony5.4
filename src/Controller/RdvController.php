@@ -2,19 +2,21 @@
 
 namespace App\Controller;
 
+use DateInterval;
 use App\Entity\Rdv;
 use App\Form\RdvType;
+use App\Entity\Calendar;
+use App\Form\CalendarType;
 use App\Repository\RdvRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\Mailer;
+use App\Repository\CalendarRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Knp\Component\Pager\PaginatorInterface;
-use App\Repository\CalendarRepository;
-use App\Entity\Calendar;
-use App\Form\CalendarType;
-use Symfony\Component\Mime\Email;
-use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
 
 
@@ -83,22 +85,28 @@ class RdvController extends AbstractController
      
     if ($form->isSubmitted() && $form->isValid()) 
     {
-        // $dateRdv = $rdv->getDate();
+        // $date_rdv = $rdv->getDate(); // Obtenez la date du RDV de votre entité RDV
 
-        // // Soustraction d'un jour
-        // $dateEnvoi = $dateRdv->modify('-1 day');
+        // $timestamp = strtotime($date_rdv->format('Y-m-d'));
+        // $timestamp_jour_avant = $timestamp - 86400;
+        // $date_rappel = new \DateTime(date('Y-m-d', $timestamp_jour_avant)); // Créez un nouvel objet DateTime à partir de la date de rappel
         
-        // // Envoi du mail le jour avant le RDV
-        // $emailDestinataire = $rdv->getEmail();
-        // $email = (new Email())
-        //     ->from('gymelite95@gmail.com')
-        //     ->to($emailDestinataire)
-        //     ->subject('ELITE GYM')
-        //     ->text(sprintf('Votre rendez-vous avec le nutritionniste %s est prévu pour le %s. Nous vous rappelons que votre rendez-vous est dans 1 jour.', $rdv->getNomNutritioniste(), $dateRdv->format('d/m/Y')));
+        // // Envoi du mail de rappel si la date de rappel est égale à la date système (j-1)
+        // if ($date_rappel->format('Y-m-d') === (new \DateTime('now'))->modify('-1 day')->format('Y-m-d')) {
+        //     // Envoyer l'e-mail de rappel
+        //     $emailDestinataire = $rdv->getEmail();
+        //     $email = (new Email())
+        //         ->from('gymelite95@gmail.com')
+        //         ->to($emailDestinataire)
+        //         ->subject('ELITE GYM')
+        //         ->text(sprintf('Votre rendez-vous avec le nutritionniste %s est prévu pour le %s. Nous vous rappelons que votre rendez-vous est dans 1 jour.', $rdv->getNomNutritioniste(), $date_rdv->format('d/m/Y')));
+                
+        //     $transport = new GmailSmtpTransport('gymelite95@gmail.com','sevlblnxqgzlxwnn');
+        //     $mailer=new Mailer($transport);
+        //     $mailer->send($email);
+        // }
         
-        // $transport = new GmailSmtpTransport('gymelite95@gmail.com','sevlblnxqgzlxwnn');
-        // $mailer=new Mailer($transport);
-        // $mailer->send($email);
+        
 
         $emailDestinataire = $rdv->getEmail();
         $email = (new Email())
@@ -110,8 +118,8 @@ class RdvController extends AbstractController
                 $transport = new GmailSmtpTransport('gymelite95@gmail.com','sevlblnxqgzlxwnn');
                 $mailer=new Mailer($transport);
                 $mailer->send($email);
-        $date = $rdv->getDate();
-        $nomNutritioniste = $rdv->getNomNutritioniste();
+         $date = $rdv->getDate();
+         $nomNutritioniste = $rdv->getNomNutritioniste();
 
         // Vérifier si la date est déjà prise
         $existingRdv = $this->getDoctrine()
