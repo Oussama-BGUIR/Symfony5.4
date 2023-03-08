@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier les offres{% endblock %}
+
+{% block body %}
+    <h1>Modifier les offres</h1>
+    
+
+    {{ include('offre/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+ 
+    <br>
+    {{ include('offre/_delete_form.html.twig') }}
+
+    <br>
+
+     <a href="{{ path('app_offre_index') }}">Retour à la liste</a>
+     
+
+{% endblock %}

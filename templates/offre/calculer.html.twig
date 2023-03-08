@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}L'offre{% endblock %}
+
+{% block body %}
+    <h1>L'offre de nouveau prix</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre.id }}</td>
+            </tr>
+            <tr>
+                <th>Le Prix</th>
+                <td>{{ offre.prix }}</td>
+            </tr>
+            <tr>
+                <th>Le pourcentage</th>
+                <td>{{ offre.pourcentage }}</td>
+            </tr>
+            <tr>
+                <th>Le nouveau prix</th>
+                <td>{{ (offre.pourcentage * offre.prix ) /100  }}</td>
+            </tr>
+          
+
+           
+           
+       
+        </tbody>
+    </table>
+
+
+
+    <button class=" btn "><a href="{{ path('app_offre_index') }}">Retour à la liste</a></button>
+  
+
+{% endblock %}

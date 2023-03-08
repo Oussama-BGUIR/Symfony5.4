@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les offres{% endblock %}
+
+{% block body %}
+    <h1>Les offres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Les points</th>
+                <th>Le prix</th>
+                <th>Le pourcentage</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+               
+             
+             
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in offre %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.points}}</td>
+                <td>{{i.prix}}</td>
+                <td>{{i.pourcentage}}</td>
+                <td>{{i.dateDebut |date('Y-m-d')}}</td>
+                <td>{{i.dateFin |date('Y-m-d')}}</td>
+               
+            
+                <td>
+                     <button class=" btn "><a href="{{ path('app_offre_show', {'id': i.id}) }}">Afficher</button>
+                    <button class=" btn "><a href="{{ path('app_offre_edit', {'id': i.id}) }}">Modifier</button>
+                    <button class=" btn "><a href="{{ path('app_offre_delete', {'id': i.id}) }}" >Supprimer</button>
+                    <button class=" btn "><a href="{{ path('app_offre_calculer', {'id': i.id}) }}" >Calculer Offre</button>
+                </td>
+
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+  
+    <div class="align-center"> {{ knp_pagination_render(offre) }}</div>
+    <a href="{{ path('app_offre_new') }}">Créer un nouveau offre</a>
+{% endblock %}
