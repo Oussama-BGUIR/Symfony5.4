@@ -13,6 +13,11 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
+
 
 #[Route('/menu')]
 class MenuController extends AbstractController
@@ -42,13 +47,30 @@ class MenuController extends AbstractController
 
 
     #[Route('/new', name: 'app_menu_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, MenuRepository $menuRepository, SluggerInterface $slugger): Response
+    public function new(Request $request, MenuRepository $menuRepository, SluggerInterface $slugger,FlashyNotifier $flashy): Response
     {
         $menu = new Menu();
         $form = $this->createForm(Menu1Type::class, $menu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $flashy->success('Menu crée avec success !!');
+            
+            $email = (new Email())
+                            ->from('Restaurant.EliteGym@gmail.com')
+                            ->to ('oussama.bguir@esprit.tn')
+                            ->subject('ELITE GYM')
+                            ->text(sprintf('Eat Healthy !!
+
+                            Le restaurant Elite Gym vous informe qu un nouveau Menu nommé %s a été ajouté !
+                            vous pouvez entrer dans notre interface dans notre site web "EliteGymCenter" pour accéder aux nouveautés .
+                            
+                            merci cordialement', $menu->getNom()));
+                            $transport = new GmailSmtpTransport('Restaurant.EliteGym@gmail.com','mvmfnrfhecautrjw');
+                            $mailer=new Mailer($transport);
+                            $mailer->send($email);
+
 
 
             $photo = $form->get('photo')->getData();
@@ -96,12 +118,14 @@ class MenuController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_menu_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Menu $menu, MenuRepository $menuRepository, SluggerInterface $slugger): Response
+    public function edit(Request $request, Menu $menu, MenuRepository $menuRepository, SluggerInterface $slugger, FlashyNotifier $flashy): Response
     {
         $form = $this->createForm(Menu1Type::class, $menu);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $flashy->success('Le Menu à été modifié !!');
+
 
             $photo = $form->get('photo')->getData();
 
@@ -140,10 +164,12 @@ class MenuController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_menu_delete', methods: ['POST'])]
-    public function delete(Request $request, Menu $menu, MenuRepository $menuRepository): Response
+    public function delete(Request $request, Menu $menu, MenuRepository $menuRepository, FlashyNotifier $flashy): Response
     {
         if ($this->isCsrfTokenValid('delete'.$menu->getId(), $request->request->get('_token'))) {
             $menuRepository->remove($menu, true);
+            $flashy->success('Le Menu à été supprimé !!');
+
         }
 
         return $this->redirectToRoute('app_menu_index', [], Response::HTTP_SEE_OTHER);

@@ -196,12 +196,16 @@
         <!-- inner page banner END -->
 		<div class="content-block">
             <!-- About Us -->
-
+					<div class="pagetitle" style="text-align:center" >
+					<h2>Chercher des plats préférés</h2>
+						<input id="searchbar" onkeyup="chercherplats()" type="text"
+							name="search" placeholder="Search ..">
+					</div>
 			<div class="section-area section-sp1">
                 <div class="container">
 					 <div class="row">
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-							<div class="widget courses-search-bx placeani">
+							{# <div class="widget courses-search-bx placeani">
 								<div class="form-group">
 									<div class="input-group">
 										<label>chercher des plats</label>
@@ -218,7 +222,7 @@
                                     <li><a href="#">fruité</a></li>
                                     
                                 </ul>
-                            </div>
+                            </div> #}
 
 
 						</div>
@@ -233,25 +237,26 @@
 											<div class="embed-responsive embed-responsive-16by9">
                                                 <img class="card-img-top embed-responsive-item" src="{{asset('uploads/plats/'~plat.image)}}" >
                                             </div>
-											<a href="#" class="btn">Acheter</a>
+											{# <a href="#" class="btn">Acheter</a> #}
+											<a class="btn" style="background-color:#30458B; border-color:#daeee5; color:#daeee5" href="{{path("add", {id: plat.id})}}">Commander</a>
 										</div>
 										<div class="info-bx text-center">
-											<h5><a href="#">{{ plat.nom }}</a></h5>
-											<span>{{plat.description}}</span>
+											<h5><a class="tcell" >{{ plat.nom }}</a></h5>
+											<span class="tcell" >{{plat.description}}</span>
 										</div>
 										<div class="cours-more-info">
 										  <div class="col-6 border-right">
-                                                        <label class="mt-3 mb-0">{{ plat.disponibilte ? 'Disponible' : 'Non Disponible' }}</label>
+                                                        <label class="mt-3 mb-0 tcell">{{ plat.disponibilte ? 'Disponible' : 'Non Disponible' }}</label>
                                                     </div>
 											     <div class="col-5 ">
-                                                        <label class="mt-3 mb-0">{{ plat.calorie }} Calories </label>
+                                                        <label class="mt-3 mb-0 tcell">{{ plat.calorie }} Calories </label>
                                                     </div>
 												
 										</div>
 								
 										<div class="row text-center mt-4">
                                                  <div class="col-9 ">
-                                                <label class="mt-3 mb-0">{{ plat.prix }} Millimes </label>
+                                                <label class="mt-3 mb-0 tcell">{{ plat.prix }} Millimes </label>
                                                 </div> 
                                                    </div>
 									</div>
@@ -373,6 +378,28 @@
 							</div>
 						</div>
 					</div>
+
+
+					<script>
+
+						// JavaScript code
+						function chercherplats() {
+							let input = document.getElementById('searchbar').value
+							input=input.toLowerCase();
+							let x = document.getElementsByClassName('tcell');
+
+							for (i = 0; i < x.length; i++) {
+								if (!x[i].innerHTML.toLowerCase().includes(input)) {
+									x[i].style.display="none";
+								}
+								else {
+									x[i].style.display="list-item";
+								}
+							}
+						}
+
+					</script>
+
 				</div>
             </div>
 

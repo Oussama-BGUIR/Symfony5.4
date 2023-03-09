@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,10 +177,10 @@
     <!-- Content -->
     <div class="page-content bg-white">
         <!-- inner page banner -->
-        <div class="page-banner ovbl-dark" style="background-image:url({{asset('assets/images/banner/banner4.jpg)')}};">
+        <div class="page-banner ovbl-dark" style="background-image:url({{asset('assets/images/banner/bannerpanier.jpg)')}};">
             <div class="container">
                 <div class="page-banner-entry">
-                    <h1 class="text-white">Nos Plats</h1>
+                    <h1 class="text-white">Panier des commandes</h1>
 				 </div>
             </div>
         </div>
@@ -188,7 +189,7 @@
 			<div class="container">
 				<ul class="list-inline">
 					<li><a href="#">Home</a></li>
-					<li>Nos Plats</li>
+					<li>Panier</li>
 				</ul>
 			</div>
 		</div>
@@ -200,47 +201,128 @@
 			<div class="section-area section-sp1">
                 <div class="container">
 					 <div class="row">
+                     
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-							
-							
+						{# <div class="col-lg-3 col-md-4 col-sm-12 m-b30">
+							<div class="widget courses-search-bx placeani">
+								<div class="form-group">
+									<div class="input-group">
+										<label>chercher des plats</label>
+										<input name="dzName" type="text" required class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="widget widget_archive">
+                                <h5 class="widget-title style-1">tous ls plats</h5>
+                                <ul>
+                                    <li class="active"><a href="#">General</a></li>
+                                    <li><a href="#">jus</a></li>
+                                    <li><a href="#">salade</a></li>
+                                    <li><a href="#">fruité</a></li>
+                                    
+                                </ul>
+                            </div>
 
 
-						</div>
+						</div> #}
+                        </div>
 						<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
 							<div class="col-lg-9 col-md-8 col-sm-12">
 							<div class="row">
-							{% for plat in plats %}
-								<div class="col-md-6 col-lg-4 col-sm-6 m-b30">
-									<div class="cours-bx">
-										<div class="action-box">
-											<div class="embed-responsive embed-responsive-16by9">
-                                                <img class="card-img-top embed-responsive-item" src="{{asset('uploads/plats/'~plat.image)}}" >
-                                            </div>
-											<a class="btn" style="background-color:#30458B; border-color:#daeee5; color:#daeee5" href="{{path("add", {id: plat.id})}}">Commander</a>
-										</div>
-										<div class="info-bx text-center">
-											<h5><a href="#">{{ plat.nom }}</a></h5>
-											<span>{{plat.description}}</span>
-										</div>
-										<div class="cours-more-info">
-										  <div class="col-6 border-right">
-                                                        <label class="mt-3 mb-0">{{ plat.disponibilte ? 'Disponible' : 'Non Disponible' }}</label>
-                                                    </div>
-											     <div class="col-5 ">
-                                                        <label class="mt-3 mb-0">{{ plat.calorie }} Calories </label>
-                                                    </div>
-												
-										</div>
-								
-										<div class="row text-center mt-4">
-                                                 <div class="col-9 ">
-                                                <label class="mt-3 mb-0">{{ plat.prix }} Millimes </label>
-                                                </div> 
-                                                   </div>
-									</div>
-								</div>
-							{% endfor %}
+					
+    {% block panier %}
+
+        <main id="main" class="main">
+                {# <div class="alert alert-danger" role="alert">
+                </div> #}
+            {# <div class="pagetitle" style="text-align:center" >
+                <h1>Vos commandes</h1>
+            </div> #}
+
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title" style="text-align:center" >La liste des commandes </h3>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">plat</th>
+                                        <th scope="col">Prix</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Quantite</th>
+                                        <th scope="col">Total</th>
+                                        {# <th scope="col">Action</th> #}
+
+
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for p in dataPanier  %}
+                                        <tr>
+                                            <td>{{p.plat.nom }}</td>
+                                            <td class="text-right">{{p.plat.prix }} dt</td>
+                                            <td>{{p.plat.description }}</td>
+                                            <td>
+                                                <a href="{{path("add", {id: p.plat.id})}}" >
+                                                   <i class="fa fa-plus" aria-hidden="true"></i>
+                                                   {# <i class="fa fa-plus-square-o" aria-hidden="true"></i> #}
+                                                </a>
+
+                                            {{p.quantite }}
+                                                
+                                                <a href="{{path("remove", {id: p.plat.id})}}" >
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </a>
+                                            
+                                            </td>
+                                            <td>{{p.quantite * p .plat.prix }}</td>
+                                            <td>
+
+                                               
+
+                                   
+
+
+                                                <a href="{{path("deleteCommande", {id: p.plat.id})}}" >
+                                                 <i class="fa fa-times" aria-hidden="true">annuler</i>
+
+                                                </a>
+
+                                            </td>
+
+
+                                        </tr>
+
+                                        {% else  %}
+                                        <tr>
+                                            <td colspan="5" class="text-center">Votre panier est vide </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <td colspan="3">Total</td>
+                                        <td class="text-end">{{ total }}</td>
+                                        <a class="btn btn-primary btn-lg btn-block" href="{{ path('pdf') }}"> imprimer le reçu</a>
+
+
+                                    </tr>
+                                    </tfoot>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    {% endblock %}
 								
 								
 								
@@ -405,3 +487,26 @@
 {% endblock %}
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

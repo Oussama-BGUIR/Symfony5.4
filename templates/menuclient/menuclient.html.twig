@@ -196,19 +196,25 @@
         <!-- inner page banner END -->
 		<div class="content-block">
             <!-- About Us -->
+
+            	    <div class="pagetitle" style="text-align:center" >
+					    <h2>Chercher des Menus préférés</h2>
+						<input id="searchbar" onkeyup="cherchermenus()" type="text"
+							name="search" placeholder="Search ..">
+					</div>
 			<div class="section-area section-sp1">
                 <div class="container">
 					 <div class="row">
 						<div class="col-lg-3 col-md-4 col-sm-12 m-b30">
-							<div class="widget courses-search-bx placeani">
+							{# <div class="widget courses-search-bx placeani">
 								<div class="form-group">
 									<div class="input-group">
 										<label>chercher des menus</label>
 										<input name="dzName" type="text" required class="form-control">
 									</div>
 								</div>
-							</div>
-							<div class="widget widget_archive">
+							</div> #}
+							{# <div class="widget widget_archive">
                                 <h5 class="widget-title style-1">tout les menus</h5>
                                 <ul>
                                     <li class="active"><a href="#">General</a></li>
@@ -218,7 +224,7 @@
                                     <li><a href="#">A boire</a></li>
                                     <li><a href="#">A mangé</a></li>
                                 </ul>
-                            </div>
+                            </div> #}
 							{# <div class="widget">
 								<a href="#"><img src="assets/images/adv/adv.jpg" alt=""/></a>
 							</div> #}
@@ -245,15 +251,15 @@
                                             
 										</div>
 										<div class="info-bx text-center">
-											<h5><a href="#">{{ menu.nom }}</a></h5>
-											<span>{{menu.description}}</span>
+											<h5><a class="tcell">{{ menu.nom }}</a></h5>
+											<span class="tcell">{{menu.description}}</span>
 										</div>
 										<div class="cours-more-info">
 										  <div class="col-6 border-right">
-                                                        <label class="mt-3 mb-0">{{ menu.disponibilite ? 'Disponible' : 'Non Disponible' }}</label>
+                                                        <label class="mt-3 mb-0 tcell">{{ menu.disponibilite ? 'Disponible' : 'Non Disponible' }}</label>
                                                     </div>
 											     <div class="col-5 ">
-                                                        <label class="mt-3 mb-0">{{ menu.calorie }} Calories </label>
+                                                        <label class="mt-3 mb-0 tcell">{{ menu.calorie }} Calories </label>
                                                     </div>
 										</div>
 									</div>
@@ -276,6 +282,29 @@
 							</div>
 						</div>
 					</div>
+
+
+
+					<script>
+
+						// JavaScript code
+						function cherchermenus() {
+							let input = document.getElementById('searchbar').value
+							input=input.toLowerCase();
+							let x = document.getElementsByClassName('tcell');
+
+							for (i = 0; i < x.length; i++) {
+								if (!x[i].innerHTML.toLowerCase().includes(input)) {
+									x[i].style.display="none";
+								}
+								else {
+									x[i].style.display="list-item";
+								}
+							}
+						}
+
+					</script>
+
 				</div>
             </div>
         </div>

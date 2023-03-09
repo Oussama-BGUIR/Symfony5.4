@@ -43,6 +43,10 @@
 	<script src="assets/js/respond.min.js"></script>
 	<![endif]-->
 {% block css %}	
+
+    
+	<link rel="stylesheet" href="{{asset('bundles/mercuryseriesflashy/css/flashy.css')}}">
+	
 	<!-- All PLUGINS CSS ============================================= -->
 	<link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/assets.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('admin/assets/vendors/calendar/fullcalendar.css')}}">
@@ -285,8 +289,16 @@
 	</main>
 	<div class="ttr-overlay"></div>
 
+
+
+
 <!-- External JavaScripts -->
+
+
 {% block js %}
+
+<script : <script src="{{asset('bundles/mercuryseriesflashy/js/flashy.js')}}"> </script>
+
 <script src="{{asset('admin/assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('admin/assets/vendors/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{asset('admin/assets/vendors/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -387,5 +399,6 @@
 </script>
 {% endblock %}
 
+    {{include('@MercurySeriesFlashy/flashy.html.twig')}}
 <!-- Mirrored from educhamp.themetrades.com/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->
 </html>

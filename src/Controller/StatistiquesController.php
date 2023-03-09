@@ -15,24 +15,24 @@ class StatistiquesController extends AbstractController
     public function index(PlatRepository $platRepository, MenuRepository $menuRepository): Response
     {
         $plats = $platRepository->findAll();
-        $platprix = [];
+        $platNom = [];
    
        foreach($plats as $plat){
-          $platprix[] = $plat->getPrix();
+          $platNom[] = $plat->getNom();
     
        }
 
        $menus = $menuRepository->findAll();
-      $menucalorie = [];
+      $menuId = [];
   
       foreach($menus as $menu){
-          $menucalorie[] = $menu->getCalorie();
+          $menuId[] = $menu->getId();
    
       }
        
 
         return $this->render('plat/statistiques.html.twig', [
-            'platprix' => json_encode($platprix),
-            'menucalorie' => json_encode($menucalorie),        ]);
+            'platNom' => json_encode($platNom),
+            'menuId' => json_encode($menuId),        ]);
     }
 }

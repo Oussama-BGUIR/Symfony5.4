@@ -11,8 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
+
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
+use MercurySeries\FlashyBundle\FlashyNotifier;
+
+
 
 #[Route('/plat')]
 class PlatController extends AbstractController
@@ -41,13 +48,29 @@ class PlatController extends AbstractController
     }
 
     #[Route('/new', name: 'app_plat_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, PlatRepository $platRepository, SluggerInterface $slugger): Response
+    public function new(Request $request, PlatRepository $platRepository, SluggerInterface $slugger,FlashyNotifier $flashy): Response
     {
         $plat = new Plat();
         $form = $this->createForm(Plat1Type::class, $plat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $flashy->success('plat crée avec success !!');
+
+            $email = (new Email())
+                            ->from('Restaurant.EliteGym@gmail.com')
+                            ->to ('oussama.bguir@esprit.tn')
+                            ->subject('ELITE GYM')
+                            ->text(sprintf('Eat Healthy !!
+
+                            Le restaurant Elite Gym vous informe qu un nouveau Plat nommé %s a été ajouté !
+                            vous pouvez entrer dans notre interface dans notre site web "EliteGymCenter" pour accéder aux nouveautés .
+                            
+                            merci cordialement', $plat->getNom()));
+                            $transport = new GmailSmtpTransport('Restaurant.EliteGym@gmail.com','mvmfnrfhecautrjw');
+                            $mailer=new Mailer($transport);
+                            $mailer->send($email);
 
               $photo = $form->get('photo')->getData();
 
@@ -94,12 +117,14 @@ class PlatController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_plat_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Plat $plat, PlatRepository $platRepository, SluggerInterface $slugger): Response
+    public function edit(Request $request, Plat $plat, PlatRepository $platRepository, SluggerInterface $slugger,FlashyNotifier $flashy): Response
     {
         $form = $this->createForm(Plat1Type::class, $plat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $flashy->success('Le plat à été modifié !!');
+
 
             $photo = $form->get('photo')->getData();
 
@@ -138,10 +163,12 @@ class PlatController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_plat_delete', methods: ['POST'])]
-    public function delete(Request $request, Plat $plat, PlatRepository $platRepository): Response
+    public function delete(Request $request, Plat $plat, PlatRepository $platRepository,FlashyNotifier $flashy): Response
     {
         if ($this->isCsrfTokenValid('delete'.$plat->getId(), $request->request->get('_token'))) {
             $platRepository->remove($plat, true);
+            $flashy->success('Le plat à été supprimé !!');
+
         }
 
         return $this->redirectToRoute('app_plat_index', [], Response::HTTP_SEE_OTHER);

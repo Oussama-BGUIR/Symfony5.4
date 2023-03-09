@@ -12,7 +12,7 @@
     <canvas id="plat" width="400" height="100"></canvas>
         <canvas id="menu" width="400" height="100"></canvas>
 
-{{dump()}}
+{# {{dump()}} #}
   
 </div>
 {% endblock %}
@@ -24,10 +24,10 @@
     let platGraph = new Chart(plat, {
         type: "pie",
         data: {
-            labels: {{platprix|raw}},
+            labels: {{platNom|raw}},
             datasets: [{
                 label: "Répartition des plats",
-                data: {{menucalorie|raw}},
+                data: {{menuId|raw}},
             
                 backgroundColor: ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6', 
                                     '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
